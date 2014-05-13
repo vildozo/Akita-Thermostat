@@ -1,12 +1,13 @@
 AkitaThermostat::Application.routes.draw do
 
-  
-
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
   get 'users/delete/:id' => 'users#destroy', :as => 'delete_user'
   
+  get "reportes/index"
+
   devise_for :users
   resources :users
+  resources :thermostats
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
