@@ -18,7 +18,11 @@
             </li>
             <%end%>
           <%else%>
-            <li> <%= link_to "Iniciar sesion", new_user_session_path %> </li>
+            <li> <%= link_to "Iniciar sesión", new_user_session_path %> </li>
+          <%end%>
+
+          <% if user_signed_in? %>
+            <li> <%= link_to 'Nuevo Termostato', new_thermostat_path %> </li>
           <%end%>
         </ul>       
       </nav>
