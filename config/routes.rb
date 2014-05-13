@@ -5,6 +5,10 @@ AkitaThermostat::Application.routes.draw do
   
   get "reportes/index"
 
+resources :locations do
+   get 'register', on: :collection
+ end
+  # get "thermostats/id" => "locations#register"
   devise_for :users
   resources :users
   resources :thermostats
