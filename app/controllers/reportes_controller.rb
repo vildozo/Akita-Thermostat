@@ -1,6 +1,6 @@
 class ReportesController < ApplicationController
   def index
-  	response = HTTParty.get('http://0.0.0.0:3000/thermostats.json')
+  	response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
   	urls = Array.new
   	response.each do |rep|
   		urls.push(rep["url"]) 
