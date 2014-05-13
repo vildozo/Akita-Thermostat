@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20140513152255) do
 
+  create_table "static_pages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "thermostats", force: true do |t|
     t.string   "serial"
     t.integer  "user_id"
@@ -28,6 +33,11 @@ ActiveRecord::Schema.define(version: 20140513152255) do
 
   add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id"
 
+  create_table "user_managers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -39,10 +49,10 @@ ActiveRecord::Schema.define(version: 20140513152255) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "rol"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

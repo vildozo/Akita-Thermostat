@@ -15,4 +15,19 @@ class User < ActiveRecord::Base
         where(conditions).first
       end
    end
+
+   def change_role
+     if self.role==1
+        self.role=2
+      else
+        self.role=1
+     end
+     self.save!
+   end
+
+   after_create do
+    self.role=2 
+    self.save!
+   end
+
 end
