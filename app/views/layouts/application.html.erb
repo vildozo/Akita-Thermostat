@@ -8,14 +8,13 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
+   <!--p class="notice"><%= notice %></p-->
+    <!--p class="alert"><%= alert %></p-->
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
   </body>
 </html>
