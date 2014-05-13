@@ -1,0 +1,25 @@
+<%= form_for(@thermostat) do |f| %>
+  <% if @thermostat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thermostat.errors.count, "error") %> prohibited this thermostat from being saved:</h2>
+
+      <ul>
+      <% @thermostat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Crear Termostato" %>
+  </div>
+<% end %>
