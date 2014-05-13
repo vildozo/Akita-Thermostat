@@ -12,15 +12,12 @@
                 <li><%= link_to current_user.username.capitalize, '#' %></li>
               <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li> 
               <%else%>
-                <%= current_user.username.capitalize%>
+                <li> <%= link_to 'Nuevo Termostato', new_thermostat_path %> </li>
+                <li><%= link_to current_user.username.capitalize, '#' %></li>
                 <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li> 
             <%end%>
           <%else%>
             <li> <%= link_to "Iniciar sesión", new_user_session_path %> </li>
-          <%end%>
-
-          <% if user_signed_in? %>
-            <li> <%= link_to 'Nuevo Termostato', new_thermostat_path %> </li>
           <%end%>
         </ul>       
       </nav>
