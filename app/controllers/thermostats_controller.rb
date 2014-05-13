@@ -6,7 +6,8 @@ class ThermostatsController < ApplicationController
   def index
     @thermostats = Thermostat.all
   end
-
+def devise
+end
   # GET /thermostats/1
   # GET /thermostats/1.json
   def show
