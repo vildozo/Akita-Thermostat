@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513144328) do
+ActiveRecord::Schema.define(version: 20140513152255) do
 
   create_table "thermostats", force: true do |t|
     t.string   "serial"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_temperature"
+    t.boolean  "enable"
+    t.string   "room"
+    t.integer  "humidity"
+    t.float    "normal_cost"
+    t.float    "current_cost"
   end
 
   add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id"
