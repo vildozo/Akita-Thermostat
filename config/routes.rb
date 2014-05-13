@@ -1,5 +1,5 @@
 AkitaThermostat::Application.routes.draw do
-
+  get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
   get 'users/delete/:id' => 'users#destroy', :as => 'delete_user'
   
