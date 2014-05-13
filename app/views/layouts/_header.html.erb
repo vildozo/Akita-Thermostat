@@ -7,13 +7,16 @@
           <li> <%= link_to "Portal", root_url %> </li>
           <li> <%= link_to "Reportes", '#' %> </li>
           <%if current_user%>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%if current_user.role==1%>
+              <li> <%= link_to "Usuarios", 'users' %> </li>
                 <%= current_user.username.capitalize%>
                 <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li> 
-                <b class="caret"></b>
+            <%else%>
+                <%= current_user.username.capitalize%>
+                <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li> 
               </a>
             </li>
+            <%end%>
           <%else%>
             <li> <%= link_to "Iniciar sesion", new_user_session_path %> </li>
           <%end%>

@@ -6,6 +6,7 @@ gem 'bootstrap-sass','2.3.2.0'
 gem 'sprockets', '2.11.0'
 gem 'devise'
 gem  'rolify'
+gem 'cancan'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
