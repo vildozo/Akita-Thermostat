@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20140513163325) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "rol"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
