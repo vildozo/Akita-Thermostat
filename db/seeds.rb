@@ -13,3 +13,13 @@ admin.email = 'admin@hotmail.com'
 admin.password = 'admin123'
 admin.password_confirmation = 'admin123'
 admin.save!
+
+
+usuario = User.new
+usuario.username = 'usuarioaux'
+usuario.role = 2
+usuario.enable = true
+usuario.email = 'usuarioaux@hotmail.com'
+usuario.password = '12345678'
+usuario.password_confirmation = '12345678'
+usuario.save!
