@@ -1,4 +1,3 @@
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -12,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513181951) do
+ActiveRecord::Schema.define(version: 20140520043645) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -20,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140513181951) do
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ubication"
   end
 
   add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
