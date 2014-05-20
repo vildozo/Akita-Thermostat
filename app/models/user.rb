@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
-  has_many :thermostats
-
+  has_many :thermostats 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
@@ -31,3 +30,5 @@ class User < ActiveRecord::Base
    end
 
 end
+
+
