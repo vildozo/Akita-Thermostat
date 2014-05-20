@@ -6,7 +6,8 @@ class LocationsController < ApplicationController
 	def create
 	@locations = Location.new(location_params)
 	if @locations.save
-		redirect_to root_url
+		#redirect_to root_url
+		 render 'register'
 
 	else
 		flash[:notice] = "No se pudo guardar la ubicacion"
