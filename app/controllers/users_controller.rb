@@ -20,10 +20,11 @@ before_action :set_user, only: [:change_role, :destroy, :show, :edit]
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params.require(:user).permit(:username,:email, :password, :password_confirmation))
+      #@user.update_attributes(params[:user])
       @user.save
       flash[:success] = "Usuario Actualizado"
-      redirect_to @user      
+      redirect_to :controller => :users, :action => "index"      
     else
       render 'edit'
     end
@@ -55,5 +56,6 @@ before_action :set_user, only: [:change_role, :destroy, :show, :edit]
     def user_params
       params[:user]
     end
+
 
 end
