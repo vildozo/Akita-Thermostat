@@ -29,7 +29,7 @@ end
 
     respond_to do |format|
       if @thermostat.save
-        format.html { redirect_to @thermostat, notice: 'Thermostat was successfully created.' }
+        format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ end
   def update
     respond_to do |format|
       if @thermostat.update(thermostat_params)
-        format.html { redirect_to @thermostat, notice: 'Thermostat was successfully updated.' }
+        format.html { redirect_to @thermostat, notice: 'El termostato fue actualizado satisfactoriamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
