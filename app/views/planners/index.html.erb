@@ -1,0 +1,43 @@
+<h1>Listing planners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Day</th>
+      <th>Max temperature</th>
+      <th>Min temperature</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Enable</th>
+      <th>Termostat</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @planners.each do |planner| %>
+      <tr>
+        <td><%= planner.start_time %></td>
+        <td><%= planner.end_time %></td>
+        <td><%= planner.day %></td>
+        <td><%= planner.max_temperature %></td>
+        <td><%= planner.min_temperature %></td>
+        <td><%= planner.start_date %></td>
+        <td><%= planner.end_date %></td>
+        <td><%= planner.enable %></td>
+        <td><%= planner.termostat %></td>
+        <td><%= link_to 'Show', planner %></td>
+        <td><%= link_to 'Edit', edit_planner_path(planner) %></td>
+        <td><%= link_to 'Destroy', planner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Planner', new_planner_path %>

@@ -1,5 +1,7 @@
 AkitaThermostat::Application.routes.draw do
 
+  resources :planners
+
   get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
   
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'

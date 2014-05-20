@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @planner.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @planner.end_time %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @planner.day %>
+</p>
+
+<p>
+  <strong>Max temperature:</strong>
+  <%= @planner.max_temperature %>
+</p>
+
+<p>
+  <strong>Min temperature:</strong>
+  <%= @planner.min_temperature %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @planner.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @planner.end_date %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @planner.enable %>
+</p>
+
+<p>
+  <strong>Termostat:</strong>
+  <%= @planner.termostat %>
+</p>
+
+<%= link_to 'Edit', edit_planner_path(@planner) %> |
+<%= link_to 'Back', planners_path %>
