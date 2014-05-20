@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	load_and_authorize_resource
-before_action :set_user, only: [:change_role, :destroy, :show]
+before_action :set_user, only: [:change_role,:change_enable, :destroy, :show, :edit]
   # GET /user_managers
   # GET /user_managers.json
   def index
@@ -12,6 +12,22 @@ before_action :set_user, only: [:change_role, :destroy, :show]
 
   def show
     
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params.require(:user).permit(:username,:email, :password, :password_confirmation))
+      #@user.update_attributes(params[:user])
+      @user.save
+      flash[:success] = "Usuario Actualizado"
+      redirect_to :controller => :users, :action => "index"      
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -30,6 +46,14 @@ before_action :set_user, only: [:change_role, :destroy, :show]
     end
   end
 
+  def change_enable
+    @user.change_enable
+      respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -40,5 +64,6 @@ before_action :set_user, only: [:change_role, :destroy, :show]
     def user_params
       params[:user]
     end
+
 
 end

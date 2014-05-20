@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513163325) do
+ActiveRecord::Schema.define(version: 20140520043645) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140513163325) do
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ubication"
   end
 
   add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140513163325) do
     t.datetime "updated_at"
     t.string   "username"
     t.integer  "role"
+    t.boolean  "enable"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

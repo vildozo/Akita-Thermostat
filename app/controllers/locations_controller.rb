@@ -1,8 +1,12 @@
 class LocationsController < ApplicationController
+	
+	def index
+		flash[:notice] = " se pudo guardar la ubicacion"
+	end
 	def create
-	@location = Location.new(location_params)
-	if @location.save
-		render 'home'
+	@locations = Location.new(location_params)
+	if @locations.save
+		redirect_to root_url
 
 	else
 		flash[:notice] = "No se pudo guardar la ubicacion"
@@ -15,7 +19,7 @@ def register
 
 private
 	  def location_params
-	    params.require(:location).permit(:name, :ubication, :city)
+	    params.require(:location).permit(:name, :city,:ubication)
 	  end
 
 

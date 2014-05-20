@@ -1,5 +1,9 @@
-<% if user_signed_in? %>
-	<p style="text-align:right"> Bienvenido <%= current_user.username.capitalize %></p>
+<% if user_signed_in?%>
+	<%if current_user.enable == true%>
+		<p style="text-align:right"> Bienvenido <%= current_user.username.capitalize %></p>
+	<%else%>
+		<p style="text-align:right"> Usted se encuantra bloqueado</p>
+	<%end%>
 <% end %>
 <div class="center hero-unit">
 	<h1>Akita Thermostat</h1>
