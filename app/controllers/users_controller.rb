@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	load_and_authorize_resource
-before_action :set_user, only: [:change_role, :destroy, :show, :edit]
+before_action :set_user, only: [:change_role,:change_enable, :destroy, :show, :edit]
   # GET /user_managers
   # GET /user_managers.json
   def index
@@ -40,6 +40,14 @@ before_action :set_user, only: [:change_role, :destroy, :show, :edit]
 
   def change_role
     @user.change_role
+      respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def change_enable
+    @user.change_enable
       respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
