@@ -1,16 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p style="text-align:right"> <%= link_to 'Nuevo Termostato', new_thermostat_path %> </p>
+
 <p>
   <strong>Serial:</strong>
   <%= @thermostat.serial %>
 </p>
-<br>
-<br>
-<%= link_to 'Temperatura Actual', devise_path %> |
-<%= link_to 'Configuracion ', register_locations_path %>
+<br><br>
 
+<h3 align=left >Temperatura de habitación</h3>
+<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= %></div></p>
 <br>
 <br>
+
+<br><br>
 <%= link_to 'Editar', edit_thermostat_path(@thermostat) %> |
 <%= link_to 'Atrás', thermostats_path %>
 

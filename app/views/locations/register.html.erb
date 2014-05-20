@@ -1,21 +1,22 @@
 
-<h1>Registrar ubicacion</h1>
+<h1>Registrar ubicación</h1>
 
 <%= form_for :location, url: locations_path do |f| %>
   <p>
-    <%= f.label :name %><br>
+    <%= f.label :name , "Nombre" %>
     <%= f.text_field :name %>
   </p>
  
   <p>
-    <%= f.label :ubication %><br>
+    <%= f.label :ubication , "Dirección" %>
     <%= f.text_field :ubication %>
   </p>
   <p>
-    <%= f.label :city %><br>
+    <%= f.label :city , "Ciudad" %>
     <%= f.text_field :city %>
   </p>
+  <br><br>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Registrar" %>
   </p>
 <% end %>

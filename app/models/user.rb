@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
   has_many :thermostats 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :username, presence: true, uniqueness: true
+  validates :email, format: /@/
+  validates :password, confirmation: true
+
   attr_accessor :login
   def self.find_first_by_auth_conditions(warden_conditions)
       conditions = warden_conditions.dup
