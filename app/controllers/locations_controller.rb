@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 	
 	def index
-		flash[:notice] = " se pudo guardar la ubicacion"
+		flash[:notice] = " se pudo guardar la ubicación"
 	end
 	def create
 	@locations = Location.new(location_params)
@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 		 render 'register'
 
 	else
-		flash[:notice] = "No se pudo guardar la ubicacion"
+		flash[:notice] = "No se pudo guardar la ubicación"
 		    render 'register'
 	end
 end

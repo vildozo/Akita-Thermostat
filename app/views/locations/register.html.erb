@@ -34,20 +34,21 @@
   </p>
   <p>
     <%= f.label :city , "Ciudad" %>
-    <%= f.text_field :city %>
+    <%= f.select :city, ['Cochabamba', 'La Paz', 'Santa Cruz'] %>
   </p>
   <br><br>
   <p>
     <%= f.submit "Registrar" %>
   </p>
+  <br>
 <% end %>
 <div class="CSSTableGenerator" >
   <table>
     <tr>
-      <th>name</th>
-      <th>serial</th>
+      <th>Nombre</th>
+      <th>Serial</th>
     
-      <th> actions</th>
+      <th> Acciones</th>
     </tr>
     <%  current_user.thermostats.each do |thermostat| %>
     <tr>
