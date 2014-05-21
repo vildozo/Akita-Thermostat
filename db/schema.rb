@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140520163228) do
 
   create_table "locations", force: true do |t|
-    t.string   "name"
+    t.string   "property"
     t.string   "city"
     t.integer  "thermostat_id"
     t.datetime "created_at"
@@ -25,14 +25,10 @@ ActiveRecord::Schema.define(version: 20140520163228) do
   add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
 
   create_table "planners", force: true do |t|
-    t.time     "start_time"
-    t.time     "end_time"
-    t.string   "day"
+    t.string   "week_day"
     t.integer  "max_temperature"
     t.integer  "min_temperature"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.boolean  "enable"
+    t.string   "schedule"
     t.integer  "termostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"

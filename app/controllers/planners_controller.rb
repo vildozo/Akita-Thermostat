@@ -28,7 +28,7 @@ class PlannersController < ApplicationController
 
     respond_to do |format|
       if @planner.save
-        format.html { redirect_to @planner, notice: 'Planner was successfully created.' }
+        format.html { redirect_to @planner, notice: 'Cronograma creado exitosamente.' }
         format.json { render action: 'show', status: :created, location: @planner }
       else
         format.html { render action: 'new' }

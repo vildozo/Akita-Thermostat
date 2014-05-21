@@ -1,7 +1,8 @@
 class Location < ActiveRecord::Base
-  belongs_to :thermostat
+  has_many :thermostats
+  belongs_to :user
   
-  #validates :name, presence: true
-  v#alidates :city, presence: true
-  #validates :ubication, presence: true
+  validates :name, presence: true
+  validates :city, presence: true
+  validates :ubication, presence: true
 end

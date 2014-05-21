@@ -62,7 +62,7 @@ before_action :set_user, only: [:change_role,:change_enable, :destroy, :show, :e
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user]
+      params.require(:user).permit(:username,:email, :password, :password_confirmation)
     end
 
 

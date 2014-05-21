@@ -1,27 +1,43 @@
 class LocationsController < ApplicationController
 	
 	def index
-		flash[:notice] = " se pudo guardar la ubicación"
+		@locations = Location.all
 	end
+
+	def new
+    	@location = Location.new
+  	end
+
 	def create
-	@locations = Location.new(location_params)
-	if @locations.save
-		#redirect_to root_url
-		 render 'register'
+    	@location = Location.new(params[:location])
+      if @location.save
+       	redirect_to @location, notice: 'Ubicacion ingresada' 
+      else
+        render action: "new" 
+      end
+  	end
 
-	else
-		flash[:notice] = "No se pudo guardar la ubicación"
-		    render 'register'
-	end
-end
-def register
-	 render 'register'
-	end
+  	def edit
+  		@location = Location.find(params[:id])
+  	end
 
-private
+	def update
+	  	@location = Location.find(params[:id])
+	    if @location.update_attributes(params[:location])
+		    redirect_to @location, notice: 'Ubicacion Actualizada exitosamente.'
+	    else
+	    	render action: "edit" 
+	    end
+  	end
+
+  	def destroy
+	    @location = Location.find(params[:id])
+	    @location.destroy
+	    redirect_to :controller => :thermostats, :action => "index"      
+  	end
+
+	private
 	  def location_params
-	    params.require(:location).permit(:name, :city,:ubication)
+	    params.require(:location).permit(:property, :city,:ubication)
 	  end
-
-
 end
