@@ -1,0 +1,26 @@
+<h1>Historial de temperaturas</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Temperatura</th>
+      <th>Humedad</th>
+      <th>Ahorro</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @history_thermostats.each do |history_thermostat| %>
+      <tr>
+        <td><%= history_thermostat.temperature %></td>
+        <td><%= history_thermostat.humidity %></td>
+        <td><%= history_thermostat.saving %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -11,18 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520163228) do
+ActiveRecord::Schema.define(version: 20140522142632) do
+
+  create_table "history_thermostats", force: true do |t|
+    t.integer  "temperature"
+    t.integer  "humidity"
+    t.integer  "thermostat_id"
+    t.integer  "saving"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "history_thermostats", ["thermostat_id"], name: "index_history_thermostats_on_thermostat_id"
 
   create_table "locations", force: true do |t|
     t.string   "property"
+    t.string   "room"
     t.string   "city"
+    t.string   "address"
     t.integer  "thermostat_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "ubication"
   end
 
   add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
+  add_index "locations", ["user_id"], name: "index_locations_on_user_id"
 
   create_table "planners", force: true do |t|
     t.string   "week_day"

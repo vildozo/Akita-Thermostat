@@ -1,10 +1,37 @@
+<h1>Listing locations</h1>
 
-<% if user_signed_in? %>
-	<p style="text-align:right"> Bienvenido <%= current_user.username.capitalize %></p>
-<% end %>
-<div class="center hero-unit">
-	<h1>Akita Thermostat</h1>
-	<img src="images/logo.jpg" height="250" /><br><br>  	
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Room</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Thermostat</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.property %></td>
+        <td><%= location.room %></td>
+        <td><%= location.city %></td>
+        <td><%= location.address %></td>
+        <td><%= location.thermostat %></td>
+        <td><%= location.user %></td>
+        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+<br>
+
+<%= link_to 'New Location', new_location_path %>
