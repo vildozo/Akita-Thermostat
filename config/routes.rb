@@ -1,8 +1,13 @@
 AkitaThermostat::Application.routes.draw do
 
+  resources :locations
+
+  resources :history_thermostats
+
   resources :planners
 
   get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
+  get '/locations/new/:id' => 'locations#new', as: 'location_thermostat'
   
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
   get 'users/change_enable/:id' => 'users#change_enable', :as => 'change_enable_user'

@@ -21,7 +21,6 @@ before_action :set_user, only: [:change_role,:change_enable, :destroy, :show, :e
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params.require(:user).permit(:username,:email, :password, :password_confirmation))
-      #@user.update_attributes(params[:user])
       @user.save
       flash[:success] = "Usuario Actualizado"
       redirect_to :controller => :users, :action => "index"      

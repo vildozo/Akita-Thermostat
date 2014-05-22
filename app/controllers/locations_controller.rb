@@ -1,43 +1,75 @@
 class LocationsController < ApplicationController
-	
-	def index
-		@locations = Location.all
-	end
+  before_action :set_location, only: [:show, :edit, :update, :destroy]
 
-	def new
-    	@location = Location.new
-  	end
+  # GET /locations
+  # GET /locations.json
+  def index
+    @locations = Location.all
+  end
 
-	def create
-    	@location = Location.new(params[:location])
+  # GET /locations/1
+  # GET /locations/1.json
+  def show
+  end
+
+  # GET /locations/new
+  def new
+    @location = Location.new
+    @thermostat = Thermostat.find(params[:id])
+  end
+
+  # GET /locations/1/edit
+  def edit
+  end
+
+  # POST /locations
+  # POST /locations.json
+  def create
+    @location = Location.new(location_params)
+
+    respond_to do |format|
       if @location.save
-       	redirect_to @location, notice: 'Ubicacion ingresada' 
+        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @location }
       else
-        render action: "new" 
+        format.html { render action: 'new' }
+        format.json { render json: @location.errors, status: :unprocessable_entity }
       end
-  	end
+    end
+  end
 
-  	def edit
-  		@location = Location.find(params[:id])
-  	end
+  # PATCH/PUT /locations/1
+  # PATCH/PUT /locations/1.json
+  def update
+    respond_to do |format|
+      if @location.update(location_params)
+        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @location.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-	def update
-	  	@location = Location.find(params[:id])
-	    if @location.update_attributes(params[:location])
-		    redirect_to @location, notice: 'Ubicacion Actualizada exitosamente.'
-	    else
-	    	render action: "edit" 
-	    end
-  	end
+  # DELETE /locations/1
+  # DELETE /locations/1.json
+  def destroy
+    @location.destroy
+    respond_to do |format|
+      format.html { redirect_to locations_url }
+      format.json { head :no_content }
+    end
+  end
 
-  	def destroy
-	    @location = Location.find(params[:id])
-	    @location.destroy
-	    redirect_to :controller => :thermostats, :action => "index"      
-  	end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_location
+      @location = Location.find(params[:id])
+    end
 
-	private
-	  def location_params
-	    params.require(:location).permit(:property, :city,:ubication)
-	  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def location_params
+      params.require(:location).permit(:property, :room, :city, :address, :thermostat_id, :user_id)
+    end
 end

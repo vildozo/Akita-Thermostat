@@ -29,7 +29,7 @@ end
 
     respond_to do |format|
       if @thermostat.save
-        format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
+        format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
       else
         format.html { render action: 'new' }
@@ -70,6 +70,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thermostat_params
-      params.require(:thermostat).permit(:serial, :user_id)
+      params.require(:thermostat).permit(:serial, :user_id, :address, :property, :city)
     end
 end
