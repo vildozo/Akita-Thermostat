@@ -1,3 +1,3 @@
 class Planner < ActiveRecord::Base
-  belongs_to :termostat
+  belongs_to :thermostat
 end

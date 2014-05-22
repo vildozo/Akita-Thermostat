@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 20140522142632) do
     t.integer  "max_temperature"
     t.integer  "min_temperature"
     t.string   "schedule"
-    t.integer  "termostat_id"
+    t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "planners", ["termostat_id"], name: "index_planners_on_termostat_id"
+  add_index "planners", ["thermostat_id"], name: "index_planners_on_thermostat_id"
 
   create_table "static_pages", force: true do |t|
     t.datetime "created_at"
