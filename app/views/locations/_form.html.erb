@@ -21,7 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :city, 'Ciudad' %><br>
-    <%= f.text_field :city %>
+    <%= f.select :city, ['Cochabamba', 'La Paz', 'Santa Cruz'] %>
+
   </div>
   <div class="field">
     <%= f.label :address, 'Direccion' %><br>

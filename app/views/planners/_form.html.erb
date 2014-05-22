@@ -12,41 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.time_select :start_time %>
+    <%= f.label :week_day, "Dia de la semana" %><br>
+    <%= f.select :week_day, options_for_select([["Lunes"], ["Martes"], ["Miercoles"], ["Jueves"], ["Viernes"], ["Sabado"], ["Domingo"]]) %>
   </div>
+  
   <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.time_select :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :day %><br>
-    <%= f.text_field :day %>
-  </div>
-  <div class="field">
-    <%= f.label :max_temperature %><br>
+    <%= f.label :max_temperature, "Temperatura Maxima" %><br>
     <%= f.number_field :max_temperature %>
   </div>
   <div class="field">
-    <%= f.label :min_temperature %><br>
+    <%= f.label :min_temperature, "Temmperatura Minima" %><br>
     <%= f.number_field :min_temperature %>
   </div>
   <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
+    <%= f.label :schedule, "Franja horaria" %><br>
+    <%= f.select :schedule, options_for_select([["Madrugada"], ["Manana"], ["Tarde"], ["Noche"]]) %>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :enable %><br>
-    <%= f.check_box :enable %>
-  </div>
-  <div class="field">
-    <%= f.label :termostat_id %><br>
-    <%= f.text_field :termostat_id %>
-  </div>
+  
+
   <div class="actions">
     <%= f.submit %>
   </div>

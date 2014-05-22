@@ -5,7 +5,7 @@ AkitaThermostat::Application.routes.draw do
   resources :history_thermostats
 
   resources :planners
-
+  get '/planners/new/:id' => 'planners#new', as: 'new'
   get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
   get '/locations/new/:id' => 'locations#new', as: 'location_thermostat'
   
