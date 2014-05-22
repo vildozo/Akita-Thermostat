@@ -5,7 +5,7 @@ class CreatePlanners < ActiveRecord::Migration
       t.integer :max_temperature
       t.integer :min_temperature
       t.string :schedule
-      t.references :termostat, index: true
+      t.references :thermostat, index: true
 
       t.timestamps
     end
