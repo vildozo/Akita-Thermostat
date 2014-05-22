@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -93,3 +94,5 @@ ActiveRecord::Schema.define(version: 20140522142632) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
+=======
+>>>>>>> 0d0cf2a743ae362c548b5d7414a9971dc5215c8e
