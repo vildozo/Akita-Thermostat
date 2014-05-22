@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140520163228) do
   create_table "locations", force: true do |t|
     t.string   "property"
     t.string   "city"
+    t.integer  "user_id"
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140520163228) do
   end
 
   add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
+  add_index "locations", ["user_id"], name: "index_locations_on_user_id"
 
   create_table "planners", force: true do |t|
     t.string   "week_day"
