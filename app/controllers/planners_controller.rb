@@ -16,10 +16,15 @@ class PlannersController < ApplicationController
   def new
     @planner = Planner.new
     @thermostat = Thermostat.find(params[:id])
+    @planner.thermostat=@thermostat
   end
-
   # GET /planners/1/edit
   def edit
+  end
+
+  def history
+    @thermostat = Thermostat.find(params[:id])
+    @planners=@thermostat.planners
   end
 
   # POST /planners

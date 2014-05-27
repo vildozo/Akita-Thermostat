@@ -28,7 +28,7 @@
     <%= f.label :schedule, "Franja horaria" %><br>
     <%= f.select :schedule, options_for_select([["Madrugada"], ["Manana"], ["Tarde"], ["Noche"]]) %>
   </div>
-  
+  <%= f.hidden_field :thermostat_id %>
 
   <div class="actions">
     <%= f.submit %>
