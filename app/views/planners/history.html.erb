@@ -1,16 +1,16 @@
 <table>
 <tr>
-	<th>Dia de la semana:</th>
-	<th>Max temperature:</th>
-	<th>Min temperature:</th>
-	<th>Franja:</th>
+	<th width=200>Dia de la semana:</th>
+	<th width=200>Max temperature:</th>
+	<th width=200>Min temperature:</th>
+	<th width=200>Franja:</th>
 </tr>
 <% @planners.each do |planner|%>
 <tr>
-	<td> <%= planner.week_day %> </td>
-	<td> <%= planner.max_temperature %> </td>
-	<td> <%= planner.min_temperature %> </td>
-	<td> <%= planner.schedule %> </td>
+	<td align="Center"> <%= planner.week_day %> </td>
+	<td align="Center"> <%= planner.max_temperature %> </td>
+	<td align="Center"> <%= planner.min_temperature %> </td>
+	<td align="Center"> <%= planner.schedule %> </td>
 </tr>
 
 <% end %>
