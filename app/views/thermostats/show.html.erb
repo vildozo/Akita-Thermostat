@@ -2,7 +2,7 @@
 
 <p style="text-align:right">
   <%= link_to 'Historial de planificaciones',"/planners/history/" + @thermostat.id.to_s %> |
-  <a href="/history_thermostats/" > Historial de temperaturas </a>
+  <a href="/history_thermostats/" > Historial de temperaturas </a> | <%= link_to 'Agragar alarma',"/alarms/new/" + @thermostat.id.to_s %>
 </p>
 
 <p>

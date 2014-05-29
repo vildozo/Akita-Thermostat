@@ -2,6 +2,7 @@ class Thermostat < ActiveRecord::Base
   belongs_to :user
   has_many :locations
   has_many :planners
+  has_one :alarm
 
   validates :serial,uniqueness: {case_sensitive: false, :message => "Este termostato ya fue registrado"}	
   validates :serial, presence: {:message => "Es un campo obligatorio"}

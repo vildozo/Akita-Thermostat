@@ -1,5 +1,4 @@
 <h1>Lista de planificaciones</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -25,12 +24,11 @@
         <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Editar', edit_planner_path(planner), :class => 'btn btn-mini' %></td>
          <td><%= link_to 'Eliminar', planner_path(planner), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
-      </tr>
+      </tr>  
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Nuevo Planificacion', new_planner_path %>
 
