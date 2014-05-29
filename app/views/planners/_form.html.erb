@@ -1,4 +1,4 @@
-<%= form_for(@planner) do |f| %>
+<%=form_validated_for(@planner) do |f| %>
   <% if @planner.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planner.errors.count, "error") %> prohibited this planner from being saved:</h2>

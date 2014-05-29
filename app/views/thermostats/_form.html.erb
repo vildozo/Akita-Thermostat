@@ -1,19 +1,7 @@
-<%= form_for(@thermostat) do |f| %>
-  <% if @thermostat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@thermostat.errors.count, "error") %> prohibited this thermostat from being saved:</h2>
-
-      <ul>
-      <% @thermostat.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_validated_for(@thermostat) do |f| %>
   <div class="field">
     <%= f.label :serial %><br>
-    <%= f.text_field :serial %>
+    <%= f.text_field :serial,:maxlength => '10' %>
   </div>
   <div class="actions">
     <%= f.submit "Siguiente" %>
