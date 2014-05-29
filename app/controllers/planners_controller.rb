@@ -4,7 +4,8 @@ class PlannersController < ApplicationController
   # GET /planners
   # GET /planners.json
   def index
-    @planners = Planner.all
+   @planners = Planner.all
+   
   end
 
   # GET /planners/1
@@ -62,7 +63,7 @@ class PlannersController < ApplicationController
   def destroy
     @planner.destroy
     respond_to do |format|
-      format.html { redirect_to planners_url }
+      format.html { redirect_to planner_url }
       format.json { head :no_content }
     end
   end

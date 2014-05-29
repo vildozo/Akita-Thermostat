@@ -31,6 +31,6 @@
   <%= f.hidden_field :thermostat_id %>
 
   <div class="actions">
-    <%= f.submit "Registrar planificacion"%>
+    <p><%= f.submit (@planner.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-lg btn-success' %></p>
   </div>
 <% end %>

@@ -3,6 +3,7 @@ class CreateThermostats < ActiveRecord::Migration
     create_table :thermostats do |t|
       t.string :serial
       t.references :user, index: true
+       t.references :location, index: true
 
       t.timestamps
     end

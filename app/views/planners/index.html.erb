@@ -22,9 +22,9 @@
         <td><%= planner.min_temperature %></td>
         <td><%= planner.schedule %></td>
         <td><%= planner.thermostat_id %></td>
-        <td><%= link_to 'Mostrar', planner %></td>
-        <td><%= link_to 'Editar', edit_planner_path(planner) %></td>
-        <td><%= link_to 'Eliminar', planner, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>
+        <td><%= link_to 'Editar', edit_planner_path(planner), :class => 'btn btn-mini' %></td>
+         <td><%= link_to 'Eliminar', planner_path(planner), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,5 @@
 
 <br>
 
-<%= link_to 'Nuevo Planificacion', new_planner_path %>
+<td><%= link_to 'Registrar Planificacion', :controller => :planners, :action => "new", :id => thermostat
+_id %></td>

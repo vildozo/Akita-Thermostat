@@ -1,20 +1,36 @@
 <h1>Lista de planificaciones</h1>
+
 <table class="table table-striped">
-<tr>
-	<th width=200>Dia de la semana:</th>
-	<th width=200>Max temperatura:</th>
-	<th width=200>Min temperatura:</th>
-	<th width=200>Franja:</th>
-</tr>
-<% @planners.each do |planner|%>
-<tr>
-	<td align="Center"> <%= planner.week_day %> </td>
-	<td align="Center"> <%= planner.max_temperature %> </td>
-	<td align="Center"> <%= planner.min_temperature %> </td>
-	<td align="Center"> <%= planner.schedule %> </td>
-</tr>
+  <thead>
+    <tr>
+      <th>Dia de la Semana</th>
+      <th>Temperatura Maxima</th>
+      <th>Temperatura Minima</th>
+      <th>Franja Horaria</th>
+      <th>Serial del termostato</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% end %>
-
+  <tbody>
+    <% @planners.each do |planner| %>
+      <tr>
+        <td><%= planner.week_day %></td>
+        <td><%= planner.max_temperature %></td>
+        <td><%= planner.min_temperature %></td>
+        <td><%= planner.schedule %></td>
+        <td><%= planner.thermostat.serial %></td>
+        <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>
+        <td><%= link_to 'Editar', edit_planner_path(planner), :class => 'btn btn-mini' %></td>
+         <td><%= link_to 'Eliminar', planner_path(planner), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<br>
+
+<%= link_to 'Nuevo Planificacion', new_planner_path %>
 

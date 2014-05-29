@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140522142632) do
   create_table "thermostats", force: true do |t|
     t.string   "serial"
     t.integer  "user_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "current_temperature"
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140522142632) do
     t.float    "current_cost"
   end
 
+  add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id"
   add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id"
 
   create_table "users", force: true do |t|
