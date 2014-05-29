@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p style="text-align:right"> <%= link_to 'Nuevo Termostato', new_thermostat_path %> </p>
+<p style="text-align:right">
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s %> |
+  <a href="/history_thermostats/" > Historial de temperaturas </a>
+</p>
 
 <p>
   <strong>Serial:</strong>
@@ -41,10 +44,8 @@
 <p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
 <p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= %></div></p>
 <br>
-<p align="right">
-<a href="/history_thermostats/" > <INPUT Type="button" VALUE="Hitorial de temperaturas" style="background-color: #FFCC33"> </a>
-</p>
-<%= link_to 'Historia de planificaciones',"/planners/history/"+@thermostat.id.to_s %>
+
+
 <br>
 
 

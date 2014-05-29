@@ -7,9 +7,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #validates :username, presence: true, uniqueness: true
-  #validates :email, format: /@/
-  #validates :password, confirmation: true
+  #validate :password_complexity
+
+  #def password_complexity
+  #  if password.present? and not password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]). /)
+  #    errors.add :password, "debe tener al menos 8 caracteres, una minuscula, una mayuscula, y un numero"
+  #  end
+  #end
 
   attr_accessor :login
 

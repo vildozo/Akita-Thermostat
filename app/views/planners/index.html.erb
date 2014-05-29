@@ -1,6 +1,6 @@
-<h1>Listing planners</h1>
+<h1>Lista de planificaciones</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Dia de la Semana</th>
@@ -8,7 +8,6 @@
       <th>Temperatura Minima</th>
       <th>Franja Horaria</th>
       <th>ID del termostato</th>
-      <th>Termostat</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,9 +22,9 @@
         <td><%= planner.min_temperature %></td>
         <td><%= planner.schedule %></td>
         <td><%= planner.thermostat_id %></td>
-        <td><%= link_to 'Show', planner %></td>
-        <td><%= link_to 'Edit', edit_planner_path(planner) %></td>
-        <td><%= link_to 'Destroy', planner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', planner %></td>
+        <td><%= link_to 'Editar', edit_planner_path(planner) %></td>
+        <td><%= link_to 'Eliminar', planner, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Planner', new_planner_path %>
+<%= link_to 'Nuevo Planificacion', new_planner_path %>

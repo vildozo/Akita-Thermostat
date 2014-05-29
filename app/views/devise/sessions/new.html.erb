@@ -1,7 +1,7 @@
 <h2>Ingresar</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <p><%= f.label :login %><br />
+  <p><%= f.label :login, "Nombre de usuario" %><br />
      <%= f.text_field :login %></p>
 
   <div><%= f.label :password, "Contraseña" %><br />
