@@ -18,6 +18,8 @@ AkitaThermostat::Application.routes.draw do
 
   get "registrations/edit"
 
+  get '/clima' => "reportes#clima"
+
 resources :locations do
    get 'register', on: :collection
  end
