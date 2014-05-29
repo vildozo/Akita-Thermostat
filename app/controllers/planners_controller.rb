@@ -17,7 +17,8 @@ class PlannersController < ApplicationController
   def new
     @planner = Planner.new
     @thermostat = Thermostat.find(params[:id])
-    @planner.thermostat=@thermostat
+    @planner.thermostat = @thermostat
+    
   end
   # GET /planners/1/edit
   def edit
@@ -25,7 +26,7 @@ class PlannersController < ApplicationController
 
   def history
     @thermostat = Thermostat.find(params[:id])
-    @planners=@thermostat.planners
+    @planners = @thermostat.planners
   end
 
   # POST /planners
@@ -63,7 +64,7 @@ class PlannersController < ApplicationController
   def destroy
     @planner.destroy
     respond_to do |format|
-      format.html { redirect_to planner_url }
+      format.html { redirect_to planners_url }
       format.json { head :no_content }
     end
   end

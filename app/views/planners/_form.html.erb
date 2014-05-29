@@ -28,7 +28,7 @@
     <%= f.label :schedule, "Franja horaria" %><br>
     <%= f.select :schedule, options_for_select([["Madrugada"], ["Mañana"], ["Tarde"], ["Noche"]]) %>
   </div>
-  <%= f.hidden_field :thermostat_serial%>
+  <%= f.hidden_field :thermostat_id%>
 
   <div class="actions">
     <p><%= f.submit (@planner.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-lg btn-success' %></p>
