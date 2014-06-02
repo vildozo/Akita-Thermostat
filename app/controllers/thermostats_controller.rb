@@ -11,7 +11,30 @@ end
   # GET /thermostats/1
   # GET /thermostats/1.json
   def show
+    ciudad = @thermostat.locations.first.city
+    ciudad = ciudad.gsub(" ","_") + ",Bolivia"
+    responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
+    @tempMax =  responseClim["main"]["temp_max"]
+    @tempMin =  responseClim["main"]["temp_min"]
+    @hum =  responseClim["main"]["humidity"]
+    @description = responseClim["weather"][0]["description"]
+
+    response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
+
+    @thermostats = Array.new
+
+    response.each do |thermo|      
+      if thermo["serial"] ==  @thermostat.serial
+        @thermostats.push(thermo)
+      end 
+    end
+    @actualThermo = @thermostats.last
+
+
   end
+
+
+
 
   # GET /thermostats/new
   def new
@@ -26,7 +49,7 @@ end
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
-
+    @thermostat.
     respond_to do |format|
       if @thermostat.save
         format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
