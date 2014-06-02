@@ -18,7 +18,7 @@ AkitaThermostat::Application.routes.draw do
   get 'users/change_enable/:id' => 'users#change_enable', :as => 'change_enable_user'
   get 'users/delete/:id' => 'users#destroy', :as => 'delete_user'
   
-  get "reportes" => "reportes#index"
+ 
   get "registrations/edit"
   get "/error" => "static_pages#error"
 resources :locations do
