@@ -1,40 +1,52 @@
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:right">
-  <%= link_to 'Historial de planificaciones',"/planners/history/" + @thermostat.id.to_s %> |
-  <a href="/history_thermostats/" > Historial de temperaturas </a> | <%= link_to 'Agragar alarma',"/alarms/new/" + @thermostat.id.to_s %> | <%= link_to 'Ver alarmas', alarms_path %>
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s %> |
+  <a href="/history_thermostats/" > Historial de temperaturas </a>
 </p>
 
 <p>
   <strong>Serial:</strong>
   <%= @thermostat.serial %>
 </p>
+
 <p>
-  <strong>Propiedad:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.property %>
-  <%end%>
+  <strong>Temperatura:</strong>
+  
+  <%= @thermostat.temperature %>
+  
 </p>
+
 <p>
-  <strong>Habitacion:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.room %>
-  <%end%>
+  <strong>Nombre:</strong>
+  
+  <%= @thermostat.location.name %>
+  
 </p>
+
 <p>
   <strong>Ciudad:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.city %>
-  <%end%>
+  <%= @thermostat.location.city %>
 </p>
+
 <p>
-  <strong>Direccion:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.address %>
-  <%end%>
+  <strong>Direccion:</strong>  
+  <%= @thermostat.location.address %>
 </p>
 
+<br>
 
+<h3 align=left >Temperatura de habitación</h3> <br>
+<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
+<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= %></div></p>
+<br>
+
+
+<br>
 
 
 

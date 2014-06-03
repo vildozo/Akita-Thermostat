@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Serial</th>
-      <th></th>
+      <th>Temperatura</th>
     </tr>
   </thead>
 
@@ -12,9 +12,14 @@
     <% @thermostats.each do |thermostat| %>
       <tr>
         <td><%= thermostat.serial %></td>
+
+        <td><%= thermostat.temperature %></td>
+       
+
         <td><%= link_to 'Mostrar', thermostat , :class => 'btn btn-mini'%></td>
         <td><%= link_to 'Editar', edit_thermostat_path(thermostat), :class => 'btn btn-mini' %></td>
         <td><%= link_to 'Eliminar', thermostat, method: :delete, data: { confirm: 'Está seguro?' }, :class => 'btn btn-mini btn-danger'%></td>
+
        
         <td><%= link_to 'Registrar Planificacion', :controller => :planners, :action => "new", :id => thermostat.id %></td>
       </tr>
@@ -25,3 +30,4 @@
 <br>
 
 <%= link_to 'Nuevo Termostato', new_thermostat_path %>
+
