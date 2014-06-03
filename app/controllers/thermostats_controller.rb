@@ -4,7 +4,11 @@ class ThermostatsController < ApplicationController
   # GET /thermostats
   # GET /thermostats.json
   def index
-    @thermostats = Thermostat.all
+    if (current_user!=nil)
+      @thermostats = current_user.thermostats
+    else
+      redirect_to root_path
+    end
   end
 def devise
 end
@@ -19,7 +23,7 @@ end
     @hum =  responseClim["main"]["humidity"]
     @description = responseClim["weather"][0]["description"]
 
-    response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
+    response = HTTParty.get('http://127.0.0.1:80/thermostats.json')
 
     @thermostats = Array.new
 
@@ -47,16 +51,11 @@ end
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
-<<<<<<< HEAD
-     @thermostat.user_id=current_user.id
-         respond_to do |format|
-=======
     @locations = current_user.locations
     @thermostat.user = current_user
     @thermostat.energy = 0
     @thermostat.humidity = 0
     respond_to do |format|
->>>>>>> 726d599019a1c4ca4581ec5f5fd3cfd797901110
       if @thermostat.save
         format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }

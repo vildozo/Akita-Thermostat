@@ -13,25 +13,44 @@
 <p>
   <strong>Temperatura:</strong>
   
-  <%= @thermostat.current_temperature %>
+  <%= @thermostat.temperature %>
   
 </p>
 
 <p>
-  <strong>BANDERA:</strong>  
-  <%= @ciudad%>
+  <strong>Nombre:</strong>
+  
+  <%= @thermostat.location.name %>
+  
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @thermostat.location.city %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>  
+  <%= @thermostat.location.address %>
 </p>
 
 <br>
 
-<h3 align=left >Temperatura de habitación</h3> <br>
-<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
-<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
-<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
-<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
-<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%= %></div></p>
-<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= %></div></p>
+<p>
+  <strong>Descripción: </strong> <%= @description %> <br/>
+  <strong>Humedad actual: </strong> <%= @hum %> <br/>
+  <strong>Temperatura Maxima estimada: </strong> <%= @tempMax-273 %> C<br/>
+  <strong>Temperatura Minima estimada: </strong> <%= @tempMin-273 %> C<br/>
+</p>
+
 <br>
+<h3 align=left >Temperatura de habitación actual</h3> <br>
+<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["temperature"] %></div></p>
+<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["humedad"] %></div></p>
+<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["exterior"] %></div></p>
+<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["consumoN"]  %></div></p>
+<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["consumoA"] %></div></p>
+<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= @actualThermo["consumoN"] - @actualThermo["consumoA"]  %></div></p>
 
 
 <br>

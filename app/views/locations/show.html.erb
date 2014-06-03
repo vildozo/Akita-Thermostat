@@ -1,12 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-<%@location.thermostats.each do |thermostat|%>
-<p>
-  <strong>Termostato:</strong>
-  <%= thermostat.serial %>
-</p>
-<%end%>
 <p>
   <strong>Nombre:</strong>
   <%= @location.name %>
