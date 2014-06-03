@@ -28,6 +28,8 @@
     <%= f.text_field :address %>
   </div>
   <div class="actions">
-    <%= f.submit "Registrar ubicacion", class: "btn btn-large btn-primary"%>
+    <%= f.submit (@location.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
+

@@ -14,7 +14,9 @@
   <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
   <%= f.password_field :password_confirmation, :class => 'form-control' %>
 
-  <p><%= f.submit (@user.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
+  <p><%= f.submit (@user.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-info' %></p>
 
 <% end %>
 </div>
+
+<%= link_to 'Atrás', users_path, class: "btn btn-default" %>

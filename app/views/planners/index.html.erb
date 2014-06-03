@@ -18,8 +18,8 @@
     <% @planners.each do |planner| %>
       <tr>
         <td><%= planner.week_day %></td>
-        <td><%= planner.max_temperature %></td>
-        <td><%= planner.min_temperature %></td>
+        <td><%= planner.tem_max %></td>
+        <td><%= planner.temp_min %></td>
         <td><%= planner.schedule %></td>
         <td><%= planner.thermostat_id %></td>
         <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>

@@ -1,11 +1,16 @@
 <h1>Lista de ubicaciones</h1>
 
+<div align="right">
+<%= link_to 'Nueva Ubicacion', new_location_path, :class => 'btn btn-default btn-lg active' %>
+</div>
+<br>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Ciudad</th>
-      <th>Direccion</th>
+      <th><center>Nombre</center></th>
+      <th><center>Ciudad</center></th>
+      <th><center>Direccion</center></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,17 +21,12 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.name %></td>
-        
-        <td><%= location.city %></td>
-        <td><%= location.address %></td>
-
-        <td><%= location.thermostat.serial %></td>
-        <td><%= location.user %></td>
-
-        <td><%= link_to 'Mostrar', location %></td>
-        <td><%= link_to 'Editar', edit_location_path(location) %></td>
-        <td><%= link_to 'Eliminar', location, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <td><center><%= location.name %></center></td>
+        <td><center><%= location.city %></center></td>
+        <td><center><%= location.address %></center></td>
+        <td><%= link_to 'Ver', location, :class => 'btn btn-mini btn-default' %></td>
+        <td><%= link_to 'Editar', edit_location_path(location), :class => 'btn btn-mini btn-info' %></td>
+        <td><%= link_to 'Eliminar', location, method: :delete, data: { confirm: 'Esta seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,5 +34,3 @@
 
 <br>
 
-<%= link_to 'Nueva Ubicacion', new_location_path %>
-<td><%= link_to 'Nuevo termostato', new_thermostat_path(location.id) %></td>

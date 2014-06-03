@@ -7,12 +7,12 @@
 
 <p>
   <strong>Max temperature:</strong>
-  <%= @planner.max_temperature %>
+  <%= @planner.temp_max %>
 </p>
 
 <p>
   <strong>Min temperature:</strong>
-  <%= @planner.min_temperature %>
+  <%= @planner.temp_min %>
 </p>
 
 <p>
@@ -21,6 +21,6 @@
 </p>
 
 
-<td><%= link_to 'Editar', edit_planner_path(@planner), :class => 'btn btn-lg btn-success' %></td>
+<td><%= link_to 'Editar', edit_planner_path(@planner), :class => 'btn btn-info' %></td>
 
 

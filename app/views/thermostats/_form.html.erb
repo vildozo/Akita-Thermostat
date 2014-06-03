@@ -29,7 +29,7 @@
 
   <div class="actions">
 
-    <%= f.submit "Registre" %>
+     <%= f.submit (@thermostat.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-primary' %>
 
   </div>
 <% end %>

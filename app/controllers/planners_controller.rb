@@ -78,6 +78,6 @@ class PlannersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planner_params
-      params.require(:planner).permit(:week_day, :max_temperature, :min_temperature, :schedule, :thermostat_id)
+      params.require(:planner).permit(:week_day, :temp_max, :temp_min, :schedule, :thermostat_id)
     end
 end

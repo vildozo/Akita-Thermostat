@@ -43,14 +43,23 @@ end
 
   # GET /thermostats/1/edit
   def edit
+    @locations = current_user.locations
   end
 
   # POST /thermostats
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
+<<<<<<< HEAD
      @thermostat.user_id=current_user.id
          respond_to do |format|
+=======
+    @locations = current_user.locations
+    @thermostat.user = current_user
+    @thermostat.energy = 0
+    @thermostat.humidity = 0
+    respond_to do |format|
+>>>>>>> 726d599019a1c4ca4581ec5f5fd3cfd797901110
       if @thermostat.save
         format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
@@ -64,6 +73,7 @@ end
   # PATCH/PUT /thermostats/1
   # PATCH/PUT /thermostats/1.json
   def update
+    @locations = current_user.locations
     respond_to do |format|
       if @thermostat.update(thermostat_params)
         format.html { redirect_to @thermostat, notice: 'El termostato fue actualizado satisfactoriamente.' }
@@ -93,6 +103,8 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thermostat_params
-      params.require(:thermostat).permit(:serial, :user_id, :address, :property, :city)
+
+      params.require(:thermostat).permit(:serial, :temperature, :user_id, :current_temperature, :location_id, :humildity, :energy )
+
     end
 end

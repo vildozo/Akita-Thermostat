@@ -17,12 +17,12 @@
     <% @planners.each do |planner| %>
       <tr>
         <td><%= planner.week_day %></td>
-        <td><%= planner.max_temperature %></td>
-        <td><%= planner.min_temperature %></td>
+        <td><%= planner.temp_max %></td>
+        <td><%= planner.temp_min %></td>
         <td><%= planner.schedule %></td>
         <td><%= planner.thermostat.serial %></td>
-        <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>
-        <td><%= link_to 'Editar', edit_planner_path(planner), :class => 'btn btn-mini' %></td>
+        <td><%= link_to 'Ver', planner, :class => 'btn btn-mini btn-default' %></td>
+        <td><%= link_to 'Editar', edit_planner_path(planner), :class => 'btn btn-mini btn-info' %></td>
          <td><%= link_to 'Eliminar', planner_path(planner), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
       </tr>  
     <% end %>
