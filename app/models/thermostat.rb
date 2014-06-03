@@ -1,6 +1,6 @@
 class Thermostat < ActiveRecord::Base
   belongs_to :user
-  has_many :locations
+  belongs_to :location
   has_many :planners
 
   validates_presence_of :serial, :message => "no puede ser vacio"

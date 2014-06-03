@@ -1,4 +1,5 @@
 class PlannersController < ApplicationController
+#Este controlador se usar para la planificacion de temperaturas por dia en el thermostato
   before_action :set_planner, only: [:show, :edit, :update, :destroy]
 
   # GET /planners

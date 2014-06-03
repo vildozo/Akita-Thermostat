@@ -1,9 +1,10 @@
 class CreateThermostats < ActiveRecord::Migration
   def change
     create_table :thermostats do |t|
+      t.integer :temperature
       t.string :serial
       t.references :user, index: true
-
+      t.references :location, index: true
       t.timestamps
     end
   end

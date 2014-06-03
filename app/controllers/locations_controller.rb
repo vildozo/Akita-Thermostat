@@ -1,10 +1,15 @@
 class LocationsController < ApplicationController
+#Ese controladora maneja la ubicaciones de las casas de los usuarios
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    if (current_user!=nil)
+      @locations = current_user.locations
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /locations/1
@@ -15,7 +20,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
-    @thermostat = Thermostat.find(params[:id])
+   
   end
 
   # GET /locations/1/edit
@@ -26,7 +31,7 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
+    @location.user=current_user
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
@@ -61,7 +66,7 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
@@ -70,6 +75,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:property, :room, :city, :address, :thermostat_id, :user_id)
+      params.require(:location).permit(:name, :city, :address, :user_id)
     end
 end

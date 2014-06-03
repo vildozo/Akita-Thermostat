@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+
+<%@location.thermostats.each do |thermostat|%>
 <p>
   <strong>Termostato:</strong>
-  <%= @location.thermostat.serial %>
+  <%= thermostat.serial %>
+</p>
+<%end%>
+<p>
+  <strong>Nombre:</strong>
+  <%= @location.name %>
 </p>
 
-<p>
-  <strong>Propiedad:</strong>
-  <%= @location.property %>
-</p>
-
-<p>
-  <strong>Habitacion:</strong>
-  <%= @location.room %>
-</p>
 
 <p>
   <strong>Ciudad:</strong>

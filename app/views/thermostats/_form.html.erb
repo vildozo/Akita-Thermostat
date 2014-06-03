@@ -15,7 +15,19 @@
     <%= f.label :serial %><br>
     <%= f.text_field :serial %>
   </div>
+
+  <div class="field">
+    <%= f.label :temperature %><br>
+    <%= f.number_field :temperature %>
+  </div>
+
+<div class="field">
+    <%= f.label :location %><br>
+
+<%= f.select :location_id, options_for_select(@locations.collect{ |u| [u.name, u.id] }) %>
+</div>
+
   <div class="actions">
-    <%= f.submit "Siguiente" %>
+    <%= f.submit "Registre" %>
   </div>
 <% end %>

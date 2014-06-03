@@ -5,11 +5,12 @@ AkitaThermostat::Application.routes.draw do
   resources :history_thermostats
 
   resources :planners
+  get '/thermostats/new' => 'thermostats#new', as: 'new_thermostat'
   get '/planners/new/:id' => 'planners#new', as: 'new'
   get '/planners/history/:id' => 'planners#history', as: 'planner_history'
   get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
-  get '/locations/new/:id' => 'locations#new', as: 'location_thermostat'
-  
+  get '/locations/new' => 'locations#new', as: 'location_thermostat'
+  post '/locations/add_thermostat/:id' => 'locations#add_thermostat', as: 'add_thermostat'
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
   get 'users/change_enable/:id' => 'users#change_enable', :as => 'change_enable_user'
   get 'users/delete/:id' => 'users#destroy', :as => 'delete_user'

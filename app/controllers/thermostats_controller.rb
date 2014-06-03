@@ -16,6 +16,10 @@ end
   # GET /thermostats/new
   def new
     @thermostat = Thermostat.new
+    @locations = current_user.locations
+ 
+
+
   end
 
   # GET /thermostats/1/edit
@@ -26,10 +30,10 @@ end
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
-
+    @thermostat.user=current_user
     respond_to do |format|
       if @thermostat.save
-        format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
+        format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
       else
         format.html { render action: 'new' }
@@ -70,6 +74,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thermostat_params
-      params.require(:thermostat).permit(:serial, :user_id, :address, :property, :city)
+      params.require(:thermostat).permit(:serial, :temperature, :user_id, :current_temperature, :room, :location_id, :humildity, :normal_cost, :current_temperature)
     end
 end

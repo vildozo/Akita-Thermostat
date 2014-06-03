@@ -9,29 +9,28 @@
   <strong>Serial:</strong>
   <%= @thermostat.serial %>
 </p>
+
 <p>
-  <strong>Propiedad:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.property %>
-  <%end%>
+  <strong>Temperatura:</strong>
+  
+  <%= @thermostat.temperature %>
+  
 </p>
+
 <p>
-  <strong>Habitacion:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.room %>
-  <%end%>
+  <strong>Nombre:</strong>
+  
+  <%= @thermostat.location.name %>
+  
 </p>
+
 <p>
   <strong>Ciudad:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.city %>
-  <%end%>
+  <%= @thermostat.location.city %>
 </p>
 <p>
-  <strong>Direccion:</strong>
-  <%@thermostat.locations.each do |location|%>
-  <%= location.address %>
-  <%end%>
+  <strong>Direccion:</strong>  
+  <%= @thermostat.location.address %>
 </p>
 
 <br>

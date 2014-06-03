@@ -1,4 +1,5 @@
 class ReportesController < ApplicationController
+#En este controlador se usa para hacer los reportes del sistema.
   def index
   	response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
   	urls = Array.new

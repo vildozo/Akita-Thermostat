@@ -25,17 +25,14 @@ ActiveRecord::Schema.define(version: 20140522142632) do
   add_index "history_thermostats", ["thermostat_id"], name: "index_history_thermostats_on_thermostat_id"
 
   create_table "locations", force: true do |t|
-    t.string   "property"
-    t.string   "room"
+    t.string   "name"
     t.string   "city"
     t.string   "address"
-    t.integer  "thermostat_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "locations", ["thermostat_id"], name: "index_locations_on_thermostat_id"
   add_index "locations", ["user_id"], name: "index_locations_on_user_id"
 
   create_table "planners", force: true do |t|
@@ -56,8 +53,10 @@ ActiveRecord::Schema.define(version: 20140522142632) do
   end
 
   create_table "thermostats", force: true do |t|
+    t.integer  "temperature"
     t.string   "serial"
     t.integer  "user_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "current_temperature"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140522142632) do
     t.float    "current_cost"
   end
 
+  add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id"
   add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id"
 
   create_table "users", force: true do |t|

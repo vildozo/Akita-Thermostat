@@ -10,15 +10,14 @@
       </ul>
     </div>
   <% end %>
-   <%= f.hidden_field :thermostat_id,:value => @thermostat.id %>
+  
   <div class="field">
-    <%= f.label :property, 'Propiedad' %><br>
-    <%= f.text_field :property %>
+    <%= f.label :name, 'Nombre' %><br>
+    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :room, 'Habitacion' %><br>
-    <%= f.text_field :room %>
-  </div>
+
+
+
   <div class="field">
     <%= f.label :city, 'Ciudad' %><br>
     <%= f.select :city, ['Cochabamba', 'La Paz', 'Santa Cruz'] %>
