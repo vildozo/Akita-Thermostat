@@ -38,9 +38,6 @@ end
 
   end
 
-
-
-
   # GET /thermostats/new
   def new
     @thermostat = Thermostat.new
