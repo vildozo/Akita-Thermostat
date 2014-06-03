@@ -64,7 +64,7 @@ end
     @thermostat.humidity = 0
     respond_to do |format|
       if @thermostat.save
-        format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
+        format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
       else
         format.html { render action: 'new' }
