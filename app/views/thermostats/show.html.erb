@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:right">
-  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s %> |
-  <a href="/history_thermostats/" > Historial de temperaturas </a>
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |
+  <a href="/history_thermostats/" ,button class='btn btn-info btn-lg default'> Historial de temperaturas </a>
 </p>
 
 <p>
