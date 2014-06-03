@@ -36,34 +36,6 @@
 
 
 
-<p>
-  <strong>Descripción: </strong> <%= @description %> <br/>
-  <strong>Humedad: </strong> <%= @hum %> <br/>
-  <strong>Temperatura Maxima: </strong> <%= @tempMax-273 %> C<br/>
-  <strong>Temperatura Minima: </strong> <%= @tempMin-273 %> C<br/>
-</p>
-
-<br>
-<h3 align=left >Temperatura de habitación</h3> <br>
-<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["temperature"] %></div></p>
-<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["humedad"] %></div></p>
-<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["exterior"] %></div></p>
-<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["consumoN"]  %></div></p>
-<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["consumoA"] %></div></p>
-<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= @actualThermo["consumoN"] - @actualThermo["consumoA"]  %></div></p>
-<br>
-<br>
-<h1>Historial</h1>
-<% @thermostats.each do |thermo| %>
-  <p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= thermo["temperature"] %></div></p>
-  <p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%=  thermo["humedad"] %></div></p>
-  <p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%=  thermo["exterior"] %></div></p>
-  <p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= thermo["consumoN"]  %></div></p>
-  <p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%= thermo["consumoA"] %></div></p>
-  <p>Fecha/Hora: <div style="width:40px;height:30px;border:1px solid blue;"><%= thermo["created_at"] %></div></p>
-  <br>
-  <br>
-<% end %>
 
 
 <br><br>

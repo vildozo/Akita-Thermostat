@@ -49,7 +49,6 @@ end
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
-    @thermostat.
     respond_to do |format|
       if @thermostat.save
         format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
