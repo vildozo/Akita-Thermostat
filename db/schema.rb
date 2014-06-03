@@ -64,8 +64,9 @@ ActiveRecord::Schema.define(version: 20140529181250) do
   end
 
   create_table "thermostats", force: true do |t|
-    t.integer  "temperature"
     t.string   "serial"
+    t.integer  "temperature"
+    t.integer  "energy"
     t.integer  "user_id"
     t.integer  "location_id"
     t.datetime "created_at"

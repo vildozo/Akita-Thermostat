@@ -3,10 +3,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Cuenta</th>
-      <th>Fecha de Creacion</th>
-      <th>Rol</th>
+      <th><center>Nombre</center></th>
+      <th><center>Cuenta</center></th>
+      <th><center>Fecha de Creacion</center></th>
+      <th><center>Rol</center></th>
       <th></th>
       <th></th>
     </tr>
@@ -15,21 +15,21 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.username%></td>
-        <td><%= user.email%></td>
-        <td><%= user.created_at.strftime("%d/%m/%Y")%></td>
+        <td><center><%= user.username%></center></td>
+        <td><center><%= user.email%></center></td>
+        <td><center><%= user.created_at.strftime("%d/%m/%Y")%></center></td>
         <%if user.role == 1 %>
-          <td>Administrador</td>
+          <td><center>Administrador</center></td>
         <%else%>
-          <td>Usuario</td>
+          <td><center>Usuario</center></td>
         <%end%>
         <td><%= link_to 'Cambiar Rol', change_role_user_path(user), :class => 'btn btn-mini'   %></td>
         <%if user.enable == true%>
-        <td><%= link_to 'Bloquear', change_enable_user_path(user), :class => 'btn btn-mini'   %></td>
+        <td><%= link_to 'Bloquear', change_enable_user_path(user), :class => 'btn btn-mini btn-warning'   %></td>
         <%else%>
         <td><%= link_to 'Desbloquear', change_enable_user_path(user), :class => 'btn btn-mini'   %></td>
         <%end%>
-        <td><%= link_to 'Editar', edit_user_path(user), :class => 'btn btn-mini'  %></td>
+        <td><%= link_to 'Editar', edit_user_path(user), :class => 'btn btn-mini btn-info'  %></td>
         <td><%= link_to 'Eliminar', user_path(user), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
       </tr>
     <% end %>
