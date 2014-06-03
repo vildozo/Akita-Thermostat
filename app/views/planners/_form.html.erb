@@ -1,4 +1,4 @@
-<%= form_for(@planner) do |f| %>
+<%=form_validated_for(@planner) do |f| %>
   <% if @planner.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planner.errors.count, "error") %> prohibited this planner from being saved:</h2>
@@ -28,9 +28,9 @@
     <%= f.label :schedule, "Franja horaria" %><br>
     <%= f.select :schedule, options_for_select([["Madrugada"], ["Mañana"], ["Tarde"], ["Noche"]]) %>
   </div>
-  <%= f.hidden_field :thermostat_id %>
+  <%= f.hidden_field :thermostat_id%>
 
   <div class="actions">
-    <%= f.submit "Registrar planificacion"%>
+    <p><%= f.submit (@planner.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-lg btn-success' %></p>
   </div>
 <% end %>

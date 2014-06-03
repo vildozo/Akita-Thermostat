@@ -5,7 +5,8 @@ class PlannersController < ApplicationController
   # GET /planners
   # GET /planners.json
   def index
-    @planners = Planner.all
+   @planners = Planner.all
+   
   end
 
   # GET /planners/1
@@ -17,7 +18,8 @@ class PlannersController < ApplicationController
   def new
     @planner = Planner.new
     @thermostat = Thermostat.find(params[:id])
-    @planner.thermostat=@thermostat
+    @planner.thermostat = @thermostat
+    
   end
   # GET /planners/1/edit
   def edit
@@ -25,7 +27,7 @@ class PlannersController < ApplicationController
 
   def history
     @thermostat = Thermostat.find(params[:id])
-    @planners=@thermostat.planners
+    @planners = @thermostat.planners
   end
 
   # POST /planners
