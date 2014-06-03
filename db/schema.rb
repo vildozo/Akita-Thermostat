@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(version: 20140529181250) do
 
   create_table "history_thermostats", force: true do |t|
     t.integer  "temperature"
-    t.integer  "humidity"
-    t.integer  "energy"
+    t.integer  "humedad"
+    t.integer  "exterior"
+    t.integer  "consumoN"
+    t.integer  "consumoA"
+    t.integer  "save"
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"

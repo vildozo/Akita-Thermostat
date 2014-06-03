@@ -27,9 +27,15 @@ end
 
     @thermostats = Array.new
 
+
     response.each do |thermo|      
       if thermo["serial"] ==  @thermostat.serial
         @thermostats.push(thermo)
+        thermo["thermostat_id"] = @thermostat.id
+        thermo["ahorro"] = thermo['consumoN'].to_i - thermo['consumoA'].to_i
+        #filtered_array = thermo.reject { |h| blacklist.include? h['serial'] }
+        @history_thermostat = HistoryThermostat.new(thermo)
+        @history.save
       end 
     end
     @actualThermo = @thermostats.last
@@ -40,6 +46,7 @@ end
   # GET /thermostats/new
   def new
     @thermostat = Thermostat.new
+    @locations = current_user.locations
   end
 
   # GET /thermostats/1/edit

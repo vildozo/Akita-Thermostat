@@ -70,6 +70,6 @@ class HistoryThermostatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_thermostat_params
-      params.require(:history_thermostat).permit(:temperature, :humidity, :thermostat_id, :saving)
+      params.require(:history_thermostat).permit(:temperature, :humidity, :outdoor, :normaly, :current,  :thermostat_id, :save)
     end
 end

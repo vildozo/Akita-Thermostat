@@ -2,8 +2,11 @@ class CreateHistoryThermostats < ActiveRecord::Migration
   def change
     create_table :history_thermostats do |t|
       t.integer :temperature
-      t.integer :humidity
-      t.integer :energy
+      t.integer :humedad
+      t.integer :exterior
+      t.integer :consumoN
+      t.integer :consumoA
+      t.integer :ahorro
       t.references :thermostat, index: true
 
 
