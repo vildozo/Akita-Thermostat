@@ -4,36 +4,31 @@ class ThermostatsController < ApplicationController
   # GET /thermostats
   # GET /thermostats.json
   def index
-
-if (current_user!=nil)
-      @thermostats = current_user.thermostats
-    else
-      redirect_to root_path
-    end
+    @thermostats = Thermostat.all
   end
 def devise
 end
   # GET /thermostats/1
   # GET /thermostats/1.json
   def show
-    #ciudad = @thermostat.locations.first.city
-    #ciudad = ciudad.gsub(" ","_") + ",Bolivia"
-    #responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
-    #@tempMax =  responseClim["main"]["temp_max"]
-    #@tempMin =  responseClim["main"]["temp_min"]
-    #@hum =  responseClim["main"]["humidity"]
-    #@description = responseClim["weather"][0]["description"]
+    ciudad = @thermostat.location.city
+    ciudad = ciudad.gsub(" ","_") + ",Bolivia"
+    responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
+    @tempMax =  responseClim["main"]["temp_max"]
+    @tempMin =  responseClim["main"]["temp_min"]
+    @hum =  responseClim["main"]["humidity"]
+    @description = responseClim["weather"][0]["description"]
 
-    #response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
+    response = HTTParty.get('http://127.0.0.1:3000/thermostats.json')
 
-    #@thermostats = Array.new
+    @thermostats = Array.new
 
-    #response.each do |thermo|      
-    #  if thermo["serial"] ==  @thermostat.serial
-     #   @thermostats.push(thermo)
-      #end 
-    #end
-    #@actualThermo = @thermostats.last
+    response.each do |thermo|      
+      if thermo["serial"] ==  @thermostat.serial
+        @thermostats.push(thermo)
+      end 
+    end
+    @actualThermo = @thermostats.last
 
 
   end
@@ -44,7 +39,6 @@ end
   # GET /thermostats/new
   def new
     @thermostat = Thermostat.new
-    @locations = current_user.locations
   end
 
   # GET /thermostats/1/edit
@@ -55,11 +49,10 @@ end
   # POST /thermostats.json
   def create
     @thermostat = Thermostat.new(thermostat_params)
-    @thermostat.user=current_user
-
-    respond_to do |format|
+     @thermostat.user_id=current_user.id
+         respond_to do |format|
       if @thermostat.save
-        format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
+        format.html { redirect_to location_thermostat_path(@thermostat.id), notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
       else
         format.html { render action: 'new' }
@@ -100,6 +93,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thermostat_params
-      params.require(:thermostat).permit(:serial, :temperature, :user_id, :current_temperature, :location_id, :humildity, :normal_cost, :current_temperature)
+      params.require(:thermostat).permit(:serial, :user_id, :address, :property, :city)
     end
 end

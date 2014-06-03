@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
+     @locations = Location.all
     if (current_user!=nil)
       @locations = current_user.locations
     else
@@ -20,7 +21,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
-   
+     @thermostat = Thermostat.find(params[:id])
   end
 
   # GET /locations/1/edit
