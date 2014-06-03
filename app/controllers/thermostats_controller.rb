@@ -33,9 +33,10 @@ end
         @thermostats.push(thermo)
         thermo["thermostat_id"] = @thermostat.id
         thermo["ahorro"] = thermo['consumoN'].to_i - thermo['consumoA'].to_i
-        #filtered_array = thermo.reject { |h| blacklist.include? h['serial'] }
+         thermo.delete("serial")
+         thermo.delete("url")
         @history_thermostat = HistoryThermostat.new(thermo)
-        @history.save
+        @history_thermostat.save
       end 
     end
     @actualThermo = @thermostats.last

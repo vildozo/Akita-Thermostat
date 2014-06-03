@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140529181250) do
     t.integer  "exterior"
     t.integer  "consumoN"
     t.integer  "consumoA"
-    t.integer  "save"
+    t.integer  "ahorro"
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
