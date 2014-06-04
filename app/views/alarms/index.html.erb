@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Temp max</th>
-      <th>Temp min</th>
-      <th>Trigger time</th>
-      <th>Thermostat</th>
+      <th>Temperatura maxima</th>
+      <th>Temperatura minima</th>
+      <th>Tiempo maximo de espera</th>
+      <th>Nombre de usuario</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,15 +19,12 @@
         <td><%= alarm.temp_max %></td>
         <td><%= alarm.temp_min %></td>
         <td><%= alarm.trigger_time %></td>
-        <td><%= alarm.thermostat %></td>
-        <td><%= link_to 'Show', alarm %></td>
-        <td><%= link_to 'Edit', edit_alarm_path(alarm) %></td>
-        <td><%= link_to 'Destroy', alarm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= alarm.user.username %></td>
+        <td><%= link_to 'Ver', alarm, :class => "btn btn-mini" %></td>
+        <td><%= link_to 'Editar', edit_alarm_path(alarm), :class => "btn btn-mini btn-info" %></td>
+        <td><%= link_to 'Eliminar', alarm, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Alarm', new_alarm_path %>

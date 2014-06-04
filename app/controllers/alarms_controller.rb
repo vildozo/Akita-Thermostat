@@ -14,6 +14,11 @@ class AlarmsController < ApplicationController
   # GET /alarms/1
   # GET /alarms/1.json
   def show
+    if (current_user!=nil)
+      @alarm = current_user.alarm
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /alarms/new
@@ -29,10 +34,10 @@ class AlarmsController < ApplicationController
   # POST /alarms.json
   def create
     @alarm = Alarm.new(alarm_params)
-
+    @alarm.user = current_user
     respond_to do |format|
       if @alarm.save
-        format.html { redirect_to @alarm, notice: 'Alarm was successfully created.' }
+        format.html { redirect_to @alarm, notice: 'Alarma creada exitosamente' }
         format.json { render action: 'show', status: :created, location: @alarm }
       else
         format.html { render action: 'new' }
@@ -46,7 +51,7 @@ class AlarmsController < ApplicationController
   def update
     respond_to do |format|
       if @alarm.update(alarm_params)
-        format.html { redirect_to @alarm, notice: 'Alarm was successfully updated.' }
+        format.html { redirect_to @alarm, notice: 'Alarma editada exitosamente' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,6 +78,6 @@ class AlarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alarm_params
-      params.require(:alarm).permit(:temp_max, :temp_min, :trigger_time, :thermostat_id)
+      params.require(:alarm).permit(:temp_max, :temp_min, :trigger_time, :user_id)
     end
 end

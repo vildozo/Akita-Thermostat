@@ -1,24 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Temp max:</strong>
+  <strong>Temperatura maxima:</strong>
   <%= @alarm.temp_max %>
 </p>
 
 <p>
-  <strong>Temp min:</strong>
+  <strong>Temperatura minima:</strong>
   <%= @alarm.temp_min %>
 </p>
 
 <p>
-  <strong>Trigger time:</strong>
+  <strong>Timepo maximo de espera:</strong>
   <%= @alarm.trigger_time %>
 </p>
 
-<p>
-  <strong>Thermostat:</strong>
-  <%= @alarm.thermostat %>
-</p>
 
-<%= link_to 'Edit', edit_alarm_path(@alarm) %> |
-<%= link_to 'Back', alarms_path %>
+<%= link_to 'Editar', edit_alarm_path(@alarm), class: "btn btn-info"  %> |
+<%= link_to 'Volver', root_path, class: "btn btn-default"  %>

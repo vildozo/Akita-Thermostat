@@ -23,8 +23,8 @@
     <%= f.label :trigger_time %><br>
     <%= f.number_field :trigger_time %>
   </div>
-  <%= f.hidden_field :thermostat_id%>
+  <%= f.hidden_field :user_id%>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Registrar alarma' , :class => 'btn btn-primary' %>
   </div>
 <% end %>

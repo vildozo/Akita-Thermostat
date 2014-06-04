@@ -4,7 +4,7 @@ class CreateAlarms < ActiveRecord::Migration
       t.integer :temp_max
       t.integer :temp_min
       t.integer :trigger_time
-      t.references :thermostat, index: true
+      t.references :user, index: true
 
       t.timestamps
     end

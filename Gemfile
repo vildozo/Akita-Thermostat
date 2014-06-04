@@ -8,7 +8,7 @@ gem 'devise'
 gem  'rolify'
 gem 'cancan'
 gem 'open-weather', '~> 0.9.1'
-gem 'metric_fu'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

@@ -4,7 +4,6 @@ class Thermostat < ActiveRecord::Base
   has_many :history_thermostats
   has_many :issues
   has_many :planners
-  has_one :alarm
 
   validates :serial,uniqueness: {case_sensitive: false, :message => "Este termostato ya fue registrado"}	
   validates :serial, presence: {:message => "Es un campo obligatorio"}
