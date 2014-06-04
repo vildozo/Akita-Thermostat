@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20140604232749) do
     t.integer  "temp_max"
     t.integer  "temp_min"
     t.integer  "trigger_time"
-    t.integer  "user_id"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "alarms", ["user_id"], name: "index_alarms_on_user_id"
+  add_index "alarms", ["location_id"], name: "index_alarms_on_location_id"
 
   create_table "history_thermostats", force: true do |t|
     t.integer  "temperature"

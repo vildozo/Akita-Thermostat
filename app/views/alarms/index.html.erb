@@ -19,7 +19,6 @@
         <td><%= alarm.temp_max %></td>
         <td><%= alarm.temp_min %></td>
         <td><%= alarm.trigger_time %></td>
-        <td><%= alarm.user.username %></td>
         <td><%= link_to 'Ver', alarm, :class => "btn btn-mini" %></td>
         <td><%= link_to 'Editar', edit_alarm_path(alarm), :class => "btn btn-mini btn-info" %></td>
         <td><%= link_to 'Eliminar', alarm, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini btn-danger" %></td>

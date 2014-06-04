@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :thermostats
   belongs_to :user
-
+  has_one :alarm
 
   validates :name, :city, :address, :presence => true
 

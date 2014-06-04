@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :temp_max %><br>
+    <%= f.label :temp_max, 'Tempertura maxima' %><br>
     <%= f.number_field :temp_max %>
   </div>
   <div class="field">
-    <%= f.label :temp_min %><br>
+    <%= f.label :temp_min, 'Temperatura minima' %><br>
     <%= f.number_field :temp_min %>
   </div>
   <div class="field">
-    <%= f.label :trigger_time %><br>
+    <%= f.label :trigger_time, 'Timepo maximo de espera' %><br>
     <%= f.number_field :trigger_time %>
   </div>
-  <%= f.hidden_field :user_id%>
+  <%= f.hidden_field :location_id%>
   <div class="actions">
     <%= f.submit 'Registrar alarma' , :class => 'btn btn-primary' %>
   </div>

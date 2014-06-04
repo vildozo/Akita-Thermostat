@@ -14,16 +14,14 @@ class AlarmsController < ApplicationController
   # GET /alarms/1
   # GET /alarms/1.json
   def show
-    if (current_user!=nil)
-      @alarm = current_user.alarm
-    else
-      redirect_to root_path
-    end
+    
   end
 
   # GET /alarms/new
   def new
     @alarm = Alarm.new
+    @location = Location.find(params[:id])
+    @alarm.location = @location
   end
 
   # GET /alarms/1/edit
@@ -34,7 +32,6 @@ class AlarmsController < ApplicationController
   # POST /alarms.json
   def create
     @alarm = Alarm.new(alarm_params)
-    @alarm.user = current_user
     respond_to do |format|
       if @alarm.save
         format.html { redirect_to @alarm, notice: 'Alarma creada exitosamente' }
@@ -78,6 +75,6 @@ class AlarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alarm_params
-      params.require(:alarm).permit(:temp_max, :temp_min, :trigger_time, :user_id)
+      params.require(:alarm).permit(:temp_max, :temp_min, :trigger_time, :location_id)
     end
 end

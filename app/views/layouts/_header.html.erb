@@ -17,11 +17,6 @@
               <%else%>
                  <li> <%= link_to 'Locaciones', locations_path %> </li>
                  <li> <%= link_to 'Termostatos', thermostats_path %> </li>
-                 <%if current_user.alarm == nil%>
-                 <li> <%= link_to 'Nueva Alarma', new_alarm_path %> </li>
-                 <%else%>
-                 <li> <%= link_to 'Ver Alarma', current_user.alarm %> </li>
-                 <%end%>
                  <li><%= link_to current_user.username.capitalize, edit_registration_path(current_user) %></li>
                  <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li> 
               <%end%>

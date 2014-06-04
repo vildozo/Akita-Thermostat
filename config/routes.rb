@@ -23,6 +23,8 @@ AkitaThermostat::Application.routes.draw do
   get '/issues/open/:id' => 'issues#open', :as => 'open_issue'
 
   get '/history_thermostats/:id' => 'history_thermostats#index'
+
+  get '/alarms/new/:id' => 'alarms#new'
   
 
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
