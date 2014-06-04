@@ -1,14 +1,10 @@
+<H1>Termostato <%= @thermostat.serial %></H1>
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:right">
-  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |
-  <a href="/history_thermostats/" ,button class='btn btn-info btn-lg default'> Historial de temperaturas </a>
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |<%= link_to 'Historial de temperaturas',"/history_thermostats/"+@thermostat.id.to_s, :class => 'btn btn-info btn-lg info' %>
 </p>
 
-<p>
-  <strong>Serial:</strong>
-  <%= @thermostat.serial %>
-</p>
 
 <p>
   <strong>Temperatura:</strong>
@@ -35,16 +31,18 @@
 </p>
 
 <br>
+<H2 align=center>Temperatura actual</H2>
 
-<p>
-  <strong>Descripción: </strong> <%= @description %> <br/>
-  <strong>Humedad actual: </strong> <%= @hum %> <br/>
-  <strong>Temperatura Maxima estimada: </strong> <%= @tempMax-273 %> C<br/>
-  <strong>Temperatura Minima estimada: </strong> <%= @tempMin-273 %> C<br/>
-</p>
+
+  <p><strong>Descripción: </strong> <%= @description %> <br/></p>
+  <p><strong>Humedad actual: </strong> <%= @hum %> <br/></p>
+  <p><strong>Temperatura Maxima estimada: </strong> <%= @tempMax-273 %> C<br/></p>
+  <p><strong>Temperatura Minima estimada: </strong> <%= @tempMin-273 %> C<br/></p>
+
 
 <br>
-<h3 align=left >Temperatura de habitación actual</h3> <br>
+<H2 align=center>Temperatura registrada</H2>
+<br>
 <p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["temperature"] %></div></p>
 <p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["humedad"] %></div></p>
 <p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["exterior"] %></div></p>
