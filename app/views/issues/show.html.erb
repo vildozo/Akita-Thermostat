@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Thermostat:</strong>
+  <%= @issue.thermostat.serial %>
+
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @issue.status %>
+</p>
+
+<p>
+  <strong>Resolution:</strong>
+  <%= @issue.resolution %>
+</p>
+
+<%= link_to 'Editar', edit_issue_path(@issue), :class => 'btn btn-info'%> |
+<%= link_to 'Volver', "/issues/history/"+ @issue.thermostat.id.to_s, :class => 'btn btn-default' %>

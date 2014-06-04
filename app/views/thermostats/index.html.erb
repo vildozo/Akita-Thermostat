@@ -25,7 +25,12 @@
         <td><%= link_to 'Ver', thermostat , :class => 'btn btn-mini btn-default'%></td>
         <td><%= link_to 'Editar', edit_thermostat_path(thermostat),  :class => 'btn btn-mini btn-info' %></td>
         <td><%= link_to 'Eliminar', thermostat, method: :delete, data: { confirm: 'Está seguro?' }, :class => 'btn btn-mini btn-danger'%></td>
-        <td><%= link_to 'Registrar Planificacion', {:controller => :planners, :action => "new", :id => thermostat.id}, :class =>'btn btn-default btn-lg'%></td>
+        <td><%= link_to 'Registrar Planificacion', {:controller => :planners, :action => "new", :id => thermostat.id}, :class =>'btn btn-mini btn-active'%></td>
+          <td><%= link_to 'Reportar problema',"/issues/new/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
+          <td><%= link_to 'Ver problemas',"/issues/history/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
+
+
+
       </tr>
     <% end %>
   </tbody>

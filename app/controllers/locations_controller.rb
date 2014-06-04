@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-     @locations = Location.all
+     #@locations = Location.all
     if (current_user!=nil)
       @locations = current_user.locations
     else
