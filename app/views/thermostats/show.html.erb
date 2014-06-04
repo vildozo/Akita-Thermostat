@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:right">
-  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |<%= link_to 'Historial de temperaturas',"/history_thermostats/"+@thermostat.id.to_s, :class => 'btn btn-info btn-lg info' %>
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |<%= link_to 'Historial de temperaturas',"/history_thermostats/" + @thermostat.id.to_s, :class => 'btn btn-info btn-lg info' %>
 </p>
 
 

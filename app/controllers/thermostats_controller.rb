@@ -4,12 +4,17 @@ class ThermostatsController < ApplicationController
   # GET /thermostats
   # GET /thermostats.json
   def index
-    if (current_user!=nil)
-      @thermostats = current_user.thermostats
+    if  (current_user!=nil) 
+      if (current_user.role == 1)
+        @thermostats=Thermostat.all
+      else
+         @thermostats = current_user.thermostats
+      end
     else
-      redirect_to root_path
+        redirect_to root_path
     end
   end
+
 def devise
 end
   # GET /thermostats/1
