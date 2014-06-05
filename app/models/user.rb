@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username, presence: {:message => "Es un campo obligatorio"}
+
   #validate :password_complexity
 
   #def password_complexity

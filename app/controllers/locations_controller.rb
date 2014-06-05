@@ -23,7 +23,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
-     @thermostat = Thermostat.find(params[:id])
+     #@thermostat = Thermostat.find(params[:id])
   end
 
   # GET /locations/1/edit
@@ -37,7 +37,7 @@ class LocationsController < ApplicationController
     @location.user=current_user
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to @location, notice: 'Ubicacon registrada exitosamente' }
         format.json { render action: 'show', status: :created, location: @location }
       else
         format.html { render action: 'new' }
@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
   def update
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to @location, notice: 'Ubicacion editada exitosamente' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

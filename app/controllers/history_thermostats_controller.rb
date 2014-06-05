@@ -12,6 +12,8 @@ class HistoryThermostatsController < ApplicationController
   # GET /history_thermostats/1
   # GET /history_thermostats/1.json
   def show
+    @thermostat = Thermostat.find(params[:id])
+    @history_thermostats = @thermostat.history_thermostats
   end
 
   # GET /history_thermostats/new

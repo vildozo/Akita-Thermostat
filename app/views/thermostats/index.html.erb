@@ -8,6 +8,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <%if current_user.role == 1%>
+      <th><center>Usuario</center></th>
+      <%end%>
       <th><center>Serial</center></th>
       <th><center>Temperatura</center></th>
       <th><center>Humedad</center></th>
@@ -18,16 +21,21 @@
   <tbody>
     <% @thermostats.each do |thermostat| %>
       <tr>
+        <%if current_user.role == 1%>
+        <td><center><%= thermostat.user.username %></center></td>
+        <%end%>
         <td><center><%= thermostat.serial %></center></td>
         <td><center><%= thermostat.temperature %></center></td>
         <td><center><%= thermostat.humidity %></center></td>
         <td><center><%= thermostat.energy %></center></td>
+        <%if current_user.role == 2%>
         <td><%= link_to 'Ver', thermostat , :class => 'btn btn-mini btn-default'%></td>
         <td><%= link_to 'Editar', edit_thermostat_path(thermostat),  :class => 'btn btn-mini btn-info' %></td>
         <td><%= link_to 'Eliminar', thermostat, method: :delete, data: { confirm: 'Está seguro?' }, :class => 'btn btn-mini btn-danger'%></td>
         <td><%= link_to 'Registrar Planificacion', {:controller => :planners, :action => "new", :id => thermostat.id}, :class =>'btn btn-mini btn-active'%></td>
-          <td><%= link_to 'Reportar problema',"/issues/new/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
-          <td><%= link_to 'Ver problemas',"/issues/history/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
+        <td><%= link_to 'Reportar problema',"/issues/new/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
+        <td><%= link_to 'Ver problemas',"/issues/history/"+thermostat.id.to_s, :class => 'btn btn-mini btn-active' %></td> 
+        <%end%>
 
 
 

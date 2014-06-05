@@ -11,6 +11,7 @@ AkitaThermostat::Application.routes.draw do
   resources :planners
 
   get '/thermostats/new' => 'thermostats#new', as: 'new_thermostat'
+
   get '/planners/new/:id' => 'planners#new', as: 'new'
   get '/planners/history/:id' => 'planners#history', as: 'planner_history'
   get '/thermostats/devise' => 'thermostats#devise', as: 'devise'
@@ -20,6 +21,8 @@ AkitaThermostat::Application.routes.draw do
   get '/issues/history/:id' => 'issues#history'
   get '/issues/change_status/:id' => 'issues#change_status', :as => 'change_status_issue'
   get '/issues/open/:id' => 'issues#open', :as => 'open_issue'
+
+  get '/history_thermostats/:id' => 'history_thermostats#index'
   
 
   get 'users/change_role/:id' => 'users#change_role', :as => 'change_role_user'
