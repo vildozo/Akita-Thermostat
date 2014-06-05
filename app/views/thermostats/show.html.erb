@@ -1,3 +1,4 @@
+
 <H1>Termostato <%= @thermostat.serial %></H1>
 <p id="notice"><%= notice %></p>
 
@@ -53,7 +54,7 @@
 
 <br>
 
-
+<%= flash_notifications -%>
 
 <br><br>
 <%= link_to 'Editar', edit_thermostat_path(@thermostat),:class => 'btn btn-info' %> |
