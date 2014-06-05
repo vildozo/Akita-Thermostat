@@ -4,8 +4,7 @@
   <thead>
     <tr>
       <th>Dia de la Semana</th>
-      <th>Temperatura Maxima</th>
-      <th>Temperatura Minima</th>
+      <th>Temperatura</th>
       <th>Franja Horaria</th>
       <th>ID del termostato</th>
       <th></th>
@@ -18,8 +17,7 @@
     <% @planners.each do |planner| %>
       <tr>
         <td><%= planner.week_day %></td>
-        <td><%= planner.tem_max %></td>
-        <td><%= planner.temp_min %></td>
+        <td><%= planner.temperature %></td>
         <td><%= planner.schedule %></td>
         <td><%= planner.thermostat_id %></td>
         <td><%= link_to 'Mostrar', planner, :class => 'btn btn-mini' %></td>
