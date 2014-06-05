@@ -1,3 +1,4 @@
+<%= flash_notifications -%>
 <% if user_signed_in?%>
 	<%if current_user.enable == true%>
 		<p style="text-align:right"> Bienvenido <%= current_user.username.capitalize %></p>
