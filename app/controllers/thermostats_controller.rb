@@ -31,7 +31,7 @@ end
     @hum =  responseClim["main"]["humidity"]
     @description = responseClim["weather"][0]["description"]
 
-    response = HTTParty.get('http://127.0.0.1:4000/thermostats.json')
+    response = HTTParty.get('http://localhost/api/register.json')
 
     @thermostats = Array.new
 
