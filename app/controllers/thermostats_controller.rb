@@ -48,11 +48,11 @@ end
       end 
     end
     @actualThermo = @thermostats.last
-    if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo.current_temperature < @thermostat.location.alarm.temp_min
+    if @thermostat.location.alarm.temp_max  != nil
+    if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo["temperature"].to_i  < @thermostat.location.alarm.temp_min
       flash[:notice] = "TEMPERATURA SOBRE PASADA"
-      
+      end
     end
-
   end
 
   # GET /thermostats/new
