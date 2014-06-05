@@ -1,3 +1,4 @@
+#este controlador administra los usuarios con la ayuda de la gema devise.
 class UsersController < ApplicationController
 	load_and_authorize_resource
 before_action :set_user, only: [:change_role,:change_enable, :destroy, :show, :edit]

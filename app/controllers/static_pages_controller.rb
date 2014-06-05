@@ -1,3 +1,4 @@
+#Este controlador controla la pagina principal y controla el login
 class StaticPagesController < ApplicationController
 	
 	def home

@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::Base
 # Este es el controlador que esta controlando el devise
+class ApplicationController < ActionController::Base
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected

@@ -1,4 +1,7 @@
+#En este controlador, es donde se logra registrar un nuevo termostato y la interface
+#con ella por el cual se logra mostrar la temperatura actual y la humedad
 class ThermostatsController < ApplicationController
+
   before_action :set_thermostat, only: [:show, :edit, :update, :destroy]
 
   # GET /thermostats
@@ -23,7 +26,7 @@ end
     @hum =  responseClim["main"]["humidity"]
     @description = responseClim["weather"][0]["description"]
 
-    response = HTTParty.get('http://127.0.0.1:80/thermostats.json')
+    response = HTTParty.get('http://127.0.0.1:4000/thermostats.json')
 
     @thermostats = Array.new
 

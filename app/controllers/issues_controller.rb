@@ -1,4 +1,7 @@
+#Este es el controlador de problemas, se administra los problemas desde u reporte
+#y su respectiva status apartir de su reporte.
 class IssuesController < ApplicationController
+
   before_action :set_issue, only: [:change_status, :open,  :show, :edit, :update, :destroy]
 
   # GET /issues

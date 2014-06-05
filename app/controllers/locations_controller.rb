@@ -1,5 +1,7 @@
-class LocationsController < ApplicationController
 #Ese controladora maneja la ubicaciones de las casas de los usuarios
+#aqui se puede administrar una ubicacion.
+class LocationsController < ApplicationController
+
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations

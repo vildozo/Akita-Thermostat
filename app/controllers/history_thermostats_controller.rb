@@ -1,5 +1,6 @@
-class HistoryThermostatsController < ApplicationController
 #Este contolador contrala la historia de  los thermostatos
+
+class HistoryThermostatsController < ApplicationController
   before_action :set_history_thermostat, only: [:show, :edit, :update, :destroy]
  
   # GET /history_thermostats

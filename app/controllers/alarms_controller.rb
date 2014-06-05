@@ -1,4 +1,8 @@
+#En este controlador se programa la alarma para un termostato.
+#De este controlador compara con la temperatura actual y esta fuera del 
+#rango la alarma se activa.
 class AlarmsController < ApplicationController
+
   before_action :set_alarm, only: [:show, :edit, :update, :destroy]
 
   # GET /alarms

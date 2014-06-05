@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603172621) do
+ActiveRecord::Schema.define(version: 20140604232749) do
 
   create_table "alarms", force: true do |t|
     t.integer  "temp_max"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140603172621) do
     t.integer  "thermostat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "default"
   end
 
   add_index "planners", ["thermostat_id"], name: "index_planners_on_thermostat_id"
