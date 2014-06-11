@@ -34,7 +34,7 @@ end
       @hum =  responseClim["main"]["humidity"]
       @description = responseClim["weather"][0]["description"]
 
-      response = HTTParty.get('http://127.0.0.1:4000/thermostats.json')
+      response = HTTParty.get('http://localhost/api/register.json')
 
       @thermostats = Array.new
 
@@ -51,14 +51,12 @@ end
         end 
       end
       @actualThermo = @thermostats.last
-
-      #if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo.current_temperature < @thermostat.location.alarm.temp_min
-       # flash[:notice] = "TEMPERATURA SOBRE PASADA"
-        
-      #end
-
+      if @thermostat.location.alarm.temp_max  != nil
+        if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo["temperature"].to_i  < @thermostat.location.alarm.temp_min
+          flash[:notice] = "TEMPERATURA SOBRE PASADA"
+        end
+      end
     end
-    
   end
 
   # GET /thermostats/new
