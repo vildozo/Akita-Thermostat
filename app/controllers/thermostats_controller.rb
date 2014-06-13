@@ -23,34 +23,38 @@ end
   # GET /thermostats/1
   # GET /thermostats/1.json
   def show
-    ciudad = @thermostat.location.city
-    ciudad = ciudad.gsub(" ","_") + ",Bolivia"
-    responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
-    @tempMax =  responseClim["main"]["temp_max"]
-    @tempMin =  responseClim["main"]["temp_min"]
-    @hum =  responseClim["main"]["humidity"]
-    @description = responseClim["weather"][0]["description"]
+    if @thermostat.user_id != current_user.id
+      redirect_to '/'
+    else
+      ciudad = @thermostat.location.city
+      ciudad = ciudad.gsub(" ","_") + ",Bolivia"
+      responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
+      @tempMax =  responseClim["main"]["temp_max"]
+      @tempMin =  responseClim["main"]["temp_min"]
+      @hum =  responseClim["main"]["humidity"]
+      @description = responseClim["weather"][0]["description"]
 
-    response = HTTParty.get('http://localhost/api/register.json')
+      response = HTTParty.get('http://localhost/api/register.json')
 
-    @thermostats = Array.new
+      @thermostats = Array.new
 
 
-    response.each do |thermo|      
-      if thermo["serial"] ==  @thermostat.serial
-        @thermostats.push(thermo)
-        thermo["thermostat_id"] = @thermostat.id
-        thermo["ahorro"] = thermo['consumoN'].to_i - thermo['consumoA'].to_i
-         thermo.delete("serial")
-         thermo.delete("url")
-        @history_thermostat = HistoryThermostat.new(thermo)
-        @history_thermostat.save
-      end 
-    end
-    @actualThermo = @thermostats.last
-    if @thermostat.location.alarm.temp_max  != nil
-    if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo["temperature"].to_i  < @thermostat.location.alarm.temp_min
-      flash[:notice] = "TEMPERATURA SOBRE PASADA"
+      response.each do |thermo|      
+        if thermo["serial"] ==  @thermostat.serial
+          @thermostats.push(thermo)
+          thermo["thermostat_id"] = @thermostat.id
+          thermo["ahorro"] = thermo['consumoN'].to_i - thermo['consumoA'].to_i
+           thermo.delete("serial")
+           thermo.delete("url")
+          @history_thermostat = HistoryThermostat.new(thermo)
+          @history_thermostat.save
+        end 
+      end
+      @actualThermo = @thermostats.last
+      if @thermostat.location.alarm.temp_max  != nil
+        if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo["temperature"].to_i  < @thermostat.location.alarm.temp_min
+          flash[:notice] = "TEMPERATURA SOBRE PASADA"
+        end
       end
     end
   end
