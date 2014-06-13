@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require realtime_validations
-//=require alarms
+//= require alarms
+//= require bootstrap
