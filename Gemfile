@@ -14,6 +14,13 @@ gem 'groupdate'
 gem 'pg'
 
 
+group :assets do 
+gem 'execjs' 
+gem 'therubyracer', :platforms => :ruby 
+
+end
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
