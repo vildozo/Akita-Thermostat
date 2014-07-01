@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<%= line_chart @history_thermostats.group(:temperature).group_by_day(:created_at).count %>
+<%= line_chart @history_thermostats.pluck( :temperature,:created_at), :height => "520px", :width => "255px" %>
 <br>
 
 <%= link_to 'Volver', "/thermostats/"+ @thermostat.id.to_s, :class => 'btn btn-default' %>

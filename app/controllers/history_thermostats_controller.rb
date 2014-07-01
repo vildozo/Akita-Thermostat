@@ -9,6 +9,7 @@ class HistoryThermostatsController < ApplicationController
 
   def index
     @history_thermostats = HistoryThermostat.all
+    alarm
   end
 
   # GET /history_thermostats/1
@@ -16,11 +17,13 @@ class HistoryThermostatsController < ApplicationController
   def show
     @thermostat = Thermostat.find(params[:id])
     @history_thermostats = @thermostat.history_thermostats
+    alarm
   end
 
   # GET /history_thermostats/new
   def new
     @history_thermostat = HistoryThermostat.new
+    alarm
   end
 
   # GET /history_thermostats/1/edit
@@ -29,6 +32,17 @@ class HistoryThermostatsController < ApplicationController
 
   # POST /history_thermostats
   # POST /history_thermostats.json
+  def alarm
+    @last_history = HistoryThermostat.last
+    @alarm = @last_history.thermostat.location.alarm
+    if   @alarm != nil
+     if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
+      flash[:notice] = "alarm wrong temperature"
+    end
+  end
+
+  end
+
   def create
     @history_thermostat = HistoryThermostat.new
     @history_thermostat.thermostat_id = params[:thermostat_history][:thermostat].first
@@ -37,12 +51,13 @@ class HistoryThermostatsController < ApplicationController
     @history_thermostat.exterior = params[:thermostat_history][:exterior]
     @history_thermostat.consumoN = params[:thermostat_history][:consumoN]
     @history_thermostat.consumoA = params[:thermostat_history][:consumoA]
-    @history_thermostat.ahorro = 0
-
+    @history_thermostat.ahorro = @history_thermostat.consumoA - @history_thermostat.consumoN
+    
 
 
     respond_to do |format|
       if @history_thermostat.save
+         alarm
         format.html { redirect_to @history_thermostat, notice: 'History thermostat was successfully created.' }
         format.json { render action: 'show', status: :created, location: @history_thermostat }
       else

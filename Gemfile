@@ -8,11 +8,11 @@ gem 'devise'
 gem  'rolify'
 gem 'cancan'
 gem 'open-weather', '~> 0.9.1'
-gem "chartkick"
 gem 'groupdate'
 
 gem 'pg'
-
+#gema para el grafico
+gem "chartkick"
 
 group :assets do 
 gem 'execjs' 
