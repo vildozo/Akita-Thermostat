@@ -15,12 +15,23 @@ class ObservacionsController < ApplicationController
   # GET /observacions/new
   def new
     @observacion = Observacion.new
+    @observacion.like=0
   end
 
   # GET /observacions/1/edit
   def edit
   end
 
+def likes
+  @observacion = Observacion.find(params[:id])
+  @observacion.like=@observacion.like+1
+end
+  
+
+def dislikes
+  @observacion = Observacion.find(params[:id])
+  @observacion.like=@observacion.like-1
+end
   # POST /observacions
   # POST /observacions.json
   def create

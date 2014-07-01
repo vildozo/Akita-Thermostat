@@ -13,7 +13,8 @@ AkitaThermostat::Application.routes.draw do
   resources :history_thermostats
 
   resources :planners
-
+  get '/observacions/likes' => 'observacions#likes'
+  get '/observacions/dislikes' => 'observacions#dislikes'
   get '/thermostats/new' => 'thermostats#new', as: 'new_thermostat'
 
   get '/planners/new/:id' => 'planners#new', as: 'new'

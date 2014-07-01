@@ -17,20 +17,8 @@
   <p><strong>Temperatura Maxima estimada: </strong> <%= @tempMax-273 %> C</p>
   <p><strong>Temperatura Minima estimada: </strong> <%= @tempMin-273 %> C</p>
 
-  <h2>Agregar una observacies:</h2>
-<%= form_for([@thermostat, @thermostat.observacions.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+  
+  <a href="/observacions">Agregar una observacies:</a>
  
 <%= link_to 'Edit Article', edit_article_path(@article) %> |
 <%= link_to 'Back to Articles', articles_path %>
