@@ -49,14 +49,20 @@ end
   # POST /thermostats
   # POST /thermostats.json
   def alarm
-    @last_history = HistoryThermostat.last
-    @alarm = @last_history.thermostat.location.alarm
-    if   @alarm != nil
-     if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
-      flash[:notice] = "alarm wrong temperature"
+    @history_thermostats = HistoryThermostat.all
+    @thermostat = Thermostat.find(params[:id])
+    @history_thermostats = @thermostat.history_thermostats
+
+    @last_history = @history_thermostats.last
+    if @last_history != nil
+      @alarm = @last_history.thermostat.location.alarm
+      if   @alarm != nil
+        if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
+          flash[:notice] = "Alarma!!"
+        end
+      end
     end
   end
-end
 
   def create
     @thermostat = Thermostat.new(thermostat_params)
