@@ -1,9 +1,11 @@
 class Thermostat < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
+  belongs_to :pai
   has_many :history_thermostats
   has_many :issues
   has_many :planners
+  has_many :observacions
 
   validates :serial,uniqueness: {case_sensitive: false, :message => "Este termostato ya fue registrado"}	
   validates :serial, presence: {:message => "Es un campo obligatorio"}

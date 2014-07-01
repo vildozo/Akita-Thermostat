@@ -1,0 +1,29 @@
+<h1>Listing pais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pais.each do |pai| %>
+      <tr>
+        <td><%= pai.nombre %></td>
+        <td><%= pai.codigo %></td>
+        <td><%= link_to 'Show', pai %></td>
+        <td><%= link_to 'Edit', edit_pai_path(pai) %></td>
+        <td><%= link_to 'Destroy', pai, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pai', new_pai_path %>

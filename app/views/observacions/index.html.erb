@@ -1,0 +1,29 @@
+<h1>Listing observacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Thermostat</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @observacions.each do |observacion| %>
+      <tr>
+        <td><%= observacion.thermostat %></td>
+        <td><%= observacion.description %></td>
+        <td><%= link_to 'Show', observacion %></td>
+        <td><%= link_to 'Edit', edit_observacion_path(observacion) %></td>
+        <td><%= link_to 'Destroy', observacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Observacion', new_observacion_path %>

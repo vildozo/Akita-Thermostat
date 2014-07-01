@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605153015) do
+ActiveRecord::Schema.define(version: 20140701181646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,22 @@ ActiveRecord::Schema.define(version: 20140605153015) do
 
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
+  create_table "observacions", force: true do |t|
+    t.integer  "thermostat_id"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "observacions", ["thermostat_id"], name: "index_observacions_on_thermostat_id", using: :btree
+
+  create_table "pais", force: true do |t|
+    t.string   "nombre"
+    t.string   "codigo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "planners", force: true do |t|
     t.string   "week_day"
     t.string   "schedule"
@@ -94,9 +110,11 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.integer  "humidity"
     t.float    "normal_cost"
     t.float    "current_cost"
+    t.integer  "pais_id"
   end
 
   add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id", using: :btree
+  add_index "thermostats", ["pais_id"], name: "index_thermostats_on_pais_id", using: :btree
   add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

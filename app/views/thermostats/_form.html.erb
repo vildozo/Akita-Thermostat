@@ -27,6 +27,8 @@
 <%= f.select :location_id, options_for_select(@locations.collect{ |u| [u.name, u.id] }) %>
 </div>
 
+
+
   <div class="actions">
 
      <%= f.submit (@thermostat.new_record? ? 'Registrar' : 'Editar'), :class => 'btn btn-primary' %>

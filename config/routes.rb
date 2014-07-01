@@ -1,5 +1,9 @@
 AkitaThermostat::Application.routes.draw do
 
+  resources :observacions
+
+  resources :pais
+
   resources :issues
 
   resources :alarms
