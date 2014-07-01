@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140605153015) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "alarms", force: true do |t|
     t.integer  "temp_max"
     t.integer  "temp_min"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.datetime "updated_at"
   end
 
-  add_index "alarms", ["location_id"], name: "index_alarms_on_location_id"
+  add_index "alarms", ["location_id"], name: "index_alarms_on_location_id", using: :btree
 
   create_table "history_thermostats", force: true do |t|
     t.integer  "temperature"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.datetime "updated_at"
   end
 
-  add_index "history_thermostats", ["thermostat_id"], name: "index_history_thermostats_on_thermostat_id"
+  add_index "history_thermostats", ["thermostat_id"], name: "index_history_thermostats_on_thermostat_id", using: :btree
 
   create_table "issues", force: true do |t|
     t.integer  "thermostat_id"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.datetime "updated_at"
   end
 
-  add_index "issues", ["thermostat_id"], name: "index_issues_on_thermostat_id"
+  add_index "issues", ["thermostat_id"], name: "index_issues_on_thermostat_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.datetime "updated_at"
   end
 
-  add_index "locations", ["user_id"], name: "index_locations_on_user_id"
+  add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
   create_table "planners", force: true do |t|
     t.string   "week_day"
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.integer  "temperature"
   end
 
-  add_index "planners", ["thermostat_id"], name: "index_planners_on_thermostat_id"
+  add_index "planners", ["thermostat_id"], name: "index_planners_on_thermostat_id", using: :btree
 
   create_table "static_pages", force: true do |t|
     t.datetime "created_at"
@@ -93,8 +96,8 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.float    "current_cost"
   end
 
-  add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id"
-  add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id"
+  add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id", using: :btree
+  add_index "thermostats", ["user_id"], name: "index_thermostats_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -114,8 +117,8 @@ ActiveRecord::Schema.define(version: 20140605153015) do
     t.boolean  "enable"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

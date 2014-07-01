@@ -28,6 +28,7 @@
   </tbody>
 </table>
 
+<%= line_chart @history_thermostats.pluck( :created_at,:temperature), :height => "500px", :width => "250px" %>
 <br>
 
 <%= link_to 'Volver', "/thermostats/"+ @thermostat.id.to_s, :class => 'btn btn-default' %>

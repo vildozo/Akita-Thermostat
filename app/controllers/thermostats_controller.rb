@@ -4,8 +4,6 @@ class ThermostatsController < ApplicationController
 
   before_action :set_thermostat, only: [:show, :edit, :update, :destroy]
 
-  # GET /thermostats
-  # GET /thermostats.json
   def index
     if  (current_user!=nil) 
       if (current_user.role == 1)
@@ -22,42 +20,20 @@ def devise
 end
   # GET /thermostats/1
   # GET /thermostats/1.json
-  def show
-    if @thermostat.user_id != current_user.id
-      redirect_to '/'
-    else
-      ciudad = @thermostat.location.city
-      ciudad = ciudad.gsub(" ","_") + ",Bolivia"
-      responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
-      @tempMax =  responseClim["main"]["temp_max"]
-      @tempMin =  responseClim["main"]["temp_min"]
-      @hum =  responseClim["main"]["humidity"]
-      @description = responseClim["weather"][0]["description"]
-
-      response = HTTParty.get('http://localhost/api/register.json')
-
-      @thermostats = Array.new
-
-
-      response.each do |thermo|      
-        if thermo["serial"] ==  @thermostat.serial
-          @thermostats.push(thermo)
-          thermo["thermostat_id"] = @thermostat.id
-          thermo["ahorro"] = thermo['consumoN'].to_i - thermo['consumoA'].to_i
-           thermo.delete("serial")
-           thermo.delete("url")
-          @history_thermostat = HistoryThermostat.new(thermo)
-          @history_thermostat.save
-        end 
-      end
-      @actualThermo = @thermostats.last
-      if @thermostat.location.alarm.temp_max  != nil
-        if @actualThermo["temperature"].to_i > @thermostat.location.alarm.temp_max || @actualThermo["temperature"].to_i  < @thermostat.location.alarm.temp_min
-          flash[:notice] = "TEMPERATURA SOBRE PASADA"
-        end
-      end
-    end
+def show
+  if @thermostat.user_id != current_user.id
+    redirect_to '/'
+  else
+    ciudad = @thermostat.location.city
+    ciudad = ciudad.gsub(" ","_") + ",Bolivia"
+    responseClim = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?q=' + ciudad + '&lang=sp')
+    @tempMax =  responseClim["main"]["temp_max"]
+    @tempMin =  responseClim["main"]["temp_min"]
+    @hum =  responseClim["main"]["humidity"]
+    @description = responseClim["weather"][0]["description"]
+    alarm
   end
+end
 
   # GET /thermostats/new
   def new
@@ -72,12 +48,25 @@ end
 
   # POST /thermostats
   # POST /thermostats.json
+  def alarm
+    @last_history = HistoryThermostat.last
+    @alarm = @last_history.thermostat.location.alarm
+    if   @alarm != nil
+     if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
+      flash[:notice] = "alarm wrong temperature"
+    end
+  end
+end
+
   def create
     @thermostat = Thermostat.new(thermostat_params)
     @locations = current_user.locations
     @thermostat.user = current_user
     @thermostat.energy = 0
     @thermostat.humidity = 0
+    @history = HistoryThermostat.new
+    @history.thermostat_id = @thermostat.id
+    @history.save
     respond_to do |format|
       if @thermostat.save
         format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }

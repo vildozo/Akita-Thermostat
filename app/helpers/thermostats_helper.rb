@@ -1,5 +1,4 @@
 module ThermostatsHelper
-	module ApplicationHelper
 	def flash_notifications
     message = flash[:error] || flash[:notice]
 
@@ -8,6 +7,4 @@ module ThermostatsHelper
       javascript_tag %Q{$.notification({ message:"#{message}", type:"#{type}" });}
     end
   end
-end
-
 end
