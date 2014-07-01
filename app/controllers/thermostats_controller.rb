@@ -52,7 +52,6 @@ end
     @history_thermostats = HistoryThermostat.all
     @thermostat = Thermostat.find(params[:id])
     @history_thermostats = @thermostat.history_thermostats
-
     @last_history = @history_thermostats.last
     if @last_history != nil
       @alarm = @last_history.thermostat.location.alarm
@@ -77,9 +76,6 @@ end
       if @thermostat.save
         format.html { redirect_to @thermostat, notice: 'El termostato fue creado satisfactoriamente.' }
         format.json { render action: 'show', status: :created, location: @thermostat }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @thermostat.errors, status: :unprocessable_entity }
       end
     end
   end
