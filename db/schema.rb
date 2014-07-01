@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701181646) do
+ActiveRecord::Schema.define(version: 20140701185337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20140701181646) do
     t.float    "normal_cost"
     t.float    "current_cost"
     t.integer  "pais_id"
+    t.string   "pai"
   end
 
   add_index "thermostats", ["location_id"], name: "index_thermostats_on_location_id", using: :btree

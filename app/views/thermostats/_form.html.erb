@@ -27,6 +27,18 @@
 <%= f.select :location_id, options_for_select(@locations.collect{ |u| [u.name, u.id] }) %>
 </div>
 
+<div class="field">
+    <%= f.label :location %><br>
+
+<%= f.select :pai, :attribute, Poptions_for_select(@locations.collect{ |u| [u.name, u.id] }) %>
+</div>
+
+
+<div class="field">
+    <%= f.label :pai %><br>
+
+<%= f.select :pai, :attribute, Poptions_for_select(@pais.collect{ |u| [u.nombre, u.id] }) %>
+</div>
 
 
   <div class="actions">
