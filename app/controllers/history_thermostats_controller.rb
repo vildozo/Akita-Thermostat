@@ -53,10 +53,11 @@ class HistoryThermostatsController < ApplicationController
     @history_thermostat.consumoA = params[:thermostat_history][:consumoA]
     @history_thermostat.ahorro = @history_thermostat.consumoA - @history_thermostat.consumoN
     
-    alarm
+
 
     respond_to do |format|
       if @history_thermostat.save
+         alarm
         format.html { redirect_to @history_thermostat, notice: 'History thermostat was successfully created.' }
         format.json { render action: 'show', status: :created, location: @history_thermostat }
       else
