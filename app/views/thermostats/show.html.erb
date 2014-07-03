@@ -1,9 +1,8 @@
-
 <H1>Termostato <%= @thermostat.serial %></H1>
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:right">
-  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> |<%= link_to 'Historial de temperaturas',"/history_thermostats/" + @thermostat.id.to_s, :class => 'btn btn-info btn-lg info' %>
+  <%= link_to 'Historial de planificaciones',"/planners/history/"+@thermostat.id.to_s, :class => 'btn btn-default btn-lg active' %> | <%= link_to 'Historial de temperaturas',"/history_thermostats/" + @thermostat.id.to_s, :class => 'btn btn-info btn-lg info' %>
 </p>
 
 
@@ -39,24 +38,3 @@
   <p><strong>Humedad actual: </strong> <%= @hum %> <br/></p>
   <p><strong>Temperatura Maxima estimada: </strong> <%= @tempMax-273 %> C<br/></p>
   <p><strong>Temperatura Minima estimada: </strong> <%= @tempMin-273 %> C<br/></p>
-
-
-<br>
-<H2 align=center>Temperatura registrada</H2>
-<br>
-<p>Temperatura: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["temperature"] %></div></p>
-<p>Humedad:  <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["humedad"] %></div></p>
-<p>Exterior: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["exterior"] %></div></p>
-<p>Consumo normal: <div style="width:40px;height:30px;border:1px solid blue;"><%= @actualThermo["consumoN"]  %></div></p>
-<p>Consumo actual: <div style="width:40px;height:30px;border:1px solid blue;"><%=  @actualThermo["consumoA"] %></div></p>
-<p><h4>Ahorro[KW]:</h4> <div style="width:90px;height:30px;border:3px solid red;"><%= @actualThermo["consumoN"] - @actualThermo["consumoA"]  %></div></p>
-
-
-<br>
-
-<%= flash_notifications -%>
-
-<br><br>
-<%= link_to 'Editar', edit_thermostat_path(@thermostat),:class => 'btn btn-info' %> |
-<%= link_to 'Atrás', thermostats_path,:class => 'btn btn-default' %>
-

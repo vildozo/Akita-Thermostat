@@ -5,6 +5,8 @@ class HistoryThermostatsController < ApplicationController
  
   # GET /history_thermostats
   # GET /history_thermostats.json
+
+
   def index
     @history_thermostats = HistoryThermostat.all
   end
@@ -28,7 +30,16 @@ class HistoryThermostatsController < ApplicationController
   # POST /history_thermostats
   # POST /history_thermostats.json
   def create
-    @history_thermostat = HistoryThermostat.new(history_thermostat_params)
+    @history_thermostat = HistoryThermostat.new
+    @history_thermostat.thermostat_id = params[:thermostat_history][:thermostat].first
+    @history_thermostat.temperature = params[:thermostat_history][:temperature]
+    @history_thermostat.humedad = params[:thermostat_history][:humedad]
+    @history_thermostat.exterior = params[:thermostat_history][:exterior]
+    @history_thermostat.consumoN = params[:thermostat_history][:consumoN]
+    @history_thermostat.consumoA = params[:thermostat_history][:consumoA]
+    @history_thermostat.ahorro = 0
+
+
 
     respond_to do |format|
       if @history_thermostat.save
@@ -68,7 +79,7 @@ class HistoryThermostatsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_history_thermostat
-      @history_thermostat = HistoryThermostat.find(params[:id])
+      @history_thermostat = HistoryThermostat.where(:thermostat_id => params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
