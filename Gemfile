@@ -8,7 +8,7 @@ gem 'devise'
 gem  'rolify'
 gem 'cancan'
 gem 'open-weather', '~> 0.9.1'
-
+gem "chartkick"
 gem 'groupdate'
 
 gem 'pg'
