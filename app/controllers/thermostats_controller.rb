@@ -31,6 +31,7 @@ def show
     @tempMin =  responseClim["main"]["temp_min"]
     @hum =  responseClim["main"]["humidity"]
     @description = responseClim["weather"][0]["description"]
+    alarm
   end
 end
 
@@ -47,6 +48,16 @@ end
 
   # POST /thermostats
   # POST /thermostats.json
+  def alarm
+    @last_history = HistoryThermostat.last
+    @alarm = @last_history.thermostat.location.alarm
+    if   @alarm != nil
+     if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
+      flash[:notice] = "alarm wrong temperature"
+    end
+  end
+end
+
   def create
     @thermostat = Thermostat.new(thermostat_params)
     @locations = current_user.locations
