@@ -37,7 +37,7 @@ class HistoryThermostatsController < ApplicationController
     @alarm = @last_history.thermostat.location.alarm
     if   @alarm != nil
      if @last_history.temperature > @alarm.temp_max || @last_history.temperature < @alarm.temp_min
-      flash[:notice] = "alarm wrong temperature"
+      flash[:danger] = "alarm wrong temperature"
     end
   end
 

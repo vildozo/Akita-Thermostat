@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-<%= flash_notifications -%>
   <head>
   <title>Akita Thermostat</title>
     <%= stylesheet_link_tag "application", media: "all",
                                            "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
-   <!--p class="notice"><%= notice %></p-->
-    <!--p class="alert"><%= alert %></p-->
   <body>
     <%= render 'layouts/header' %>
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash_notifications %>
+      <%= notice %>
+      <%= alert %>
+    </div>
+
     <!--div class="jumbotron"-->
       <div class="container">
         <br><br><br>
